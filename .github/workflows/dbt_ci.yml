@@ -1,0 +1,45 @@
+name: dbt CI
+
+on:
+  push:
+    branches: [dev]
+  pull_request:
+    branches: [main]
+
+jobs:
+  dbt-build:
+    name: Generate data → load → dbt build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install dbt-duckdb faker plotly streamlit
+
+      - name: Generate source CSVs
+        run: |
+          python generator/generate.py
+          python scripts/generate_changes.py
+
+      - name: Load raw tables into DuckDB
+        run: python scripts/load_raw.py
+
+      - name: Run dbt build (models + tests)
+        working-directory: ecom
+        run: dbt build --profiles-dir .
+
+      - name: Upload DuckDB artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ecom-duckdb
+          path: data/ecom.duckdb
+          retention-days: 3
