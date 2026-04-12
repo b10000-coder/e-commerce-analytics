@@ -17,3 +17,5 @@ sources:
         description: "Raw order line items — unit price may differ from list price"
       - name: sessions
         description: "Raw app/web sessions — 20% anonymous (null customer_id)"
+      - name: customer_changes
+        description: "Customer attribute change events — city moves and tier upgrades"

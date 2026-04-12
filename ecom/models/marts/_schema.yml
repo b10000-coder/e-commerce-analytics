@@ -80,3 +80,23 @@ models:
           - relationships:
               to: ref('dim_seller')
               field: seller_key
+
+  - name: dim_customer_scd2
+    description: >
+      SCD Type 2 customer dimension. One row per customer per time period.
+      Use valid_from/valid_to to join to fact_orders at the correct point in time.
+      is_current = TRUE for the version active today.
+    columns:
+      - name: customer_scd_key
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_id
+        data_tests:
+          - not_null
+      - name: valid_from
+        data_tests:
+          - not_null
+      - name: version_number
+        data_tests:
+          - not_null

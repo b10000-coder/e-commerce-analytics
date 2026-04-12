@@ -108,3 +108,17 @@ models:
         data_tests:
           - accepted_values:
               values: ['mobile', 'desktop', 'tablet']
+
+  - name: stg_customer_changes
+    description: "Cleaned customer attribute change events."
+    columns:
+      - name: change_id
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_id
+        data_tests:
+          - not_null
+      - name: effective_date
+        data_tests:
+          - not_null
