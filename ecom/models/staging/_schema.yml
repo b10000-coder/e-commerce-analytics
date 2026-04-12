@@ -1,0 +1,124 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Cleaned, deduplicated customer records. One row per unique email."
+    columns:
+      - name: customer_id
+        description: "Primary key"
+        data_tests:
+          - unique
+          - not_null
+      - name: email
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_tier
+        data_tests:
+          - accepted_values:
+              values: ['bronze', 'silver', 'gold']
+      - name: signup_date
+        data_tests:
+          - not_null
+
+  - name: stg_sellers
+    description: "Cleaned seller accounts."
+    columns:
+      - name: seller_id
+        data_tests:
+          - unique
+          - not_null
+      - name: rating
+        data_tests:
+          - not_null
+
+  - name: stg_products
+    description: "Cleaned product listings with derived margin."
+    columns:
+      - name: product_id
+        data_tests:
+          - unique
+          - not_null
+      - name: seller_id
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_sellers')
+              field: seller_id
+
+  - name: stg_orders
+    description: >
+      Cleaned orders. Mixed date formats resolved via TRY_STRPTIME.
+      Orphaned customer_ids removed.
+    columns:
+      - name: order_id
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_id
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+      - name: order_date
+        data_tests:
+          - not_null
+      - name: order_status
+        data_tests:
+          - accepted_values:
+              values: ['pending', 'processing', 'shipped', 'delivered', 'cancelled', 'returned']
+      - name: payment_method
+        data_tests:
+          - accepted_values:
+              values: ['credit_card', 'debit_card', 'bank_transfer', 'cash_on_delivery', 'wallet']
+
+  - name: stg_order_items
+    description: "Cleaned order line items with flash-sale flag and line revenue."
+    columns:
+      - name: order_item_id
+        data_tests:
+          - unique
+          - not_null
+      - name: order_id
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_orders')
+              field: order_id
+      - name: product_id
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_products')
+              field: product_id
+
+  - name: stg_sessions
+    description: "App/web sessions. customer_id is null for anonymous sessions."
+    columns:
+      - name: session_id
+        data_tests:
+          - unique
+          - not_null
+      - name: platform
+        data_tests:
+          - accepted_values:
+              values: ['ios', 'android', 'web']
+      - name: device_type
+        data_tests:
+          - accepted_values:
+              values: ['mobile', 'desktop', 'tablet']
+
+  - name: stg_customer_changes
+    description: "Cleaned customer attribute change events."
+    columns:
+      - name: change_id
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_id
+        data_tests:
+          - not_null
+      - name: effective_date
+        data_tests:
+          - not_null

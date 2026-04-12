@@ -1,0 +1,11 @@
+data/raw/
+data/processed/
+*.duckdb
+__pycache__/
+.env
+# dbt artifacts
+ecom/target/
+ecom/dbt_packages/
+ecom/logs/
+ecom/.user.ymllogs/
+logs/

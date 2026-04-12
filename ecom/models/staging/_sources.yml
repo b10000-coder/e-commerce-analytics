@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Raw CSV files loaded into DuckDB from data/raw/"
+    schema: raw
+    tables:
+      - name: customers
+        description: "Raw customer registrations — contains duplicates and null cities"
+      - name: sellers
+        description: "Raw seller accounts"
+      - name: products
+        description: "Raw product listings with cost and list price"
+      - name: orders
+        description: "Raw orders — mixed date formats (ISO and dd/mm/yyyy)"
+      - name: order_items
+        description: "Raw order line items — unit price may differ from list price"
+      - name: sessions
+        description: "Raw app/web sessions — 20% anonymous (null customer_id)"
+      - name: customer_changes
+        description: "Customer attribute change events — city moves and tier upgrades"
