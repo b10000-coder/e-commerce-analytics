@@ -1,0 +1,5 @@
+data/raw/
+data/processed/
+*.duckdb
+__pycache__/
+.env
