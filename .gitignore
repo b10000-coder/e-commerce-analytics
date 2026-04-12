@@ -8,3 +8,4 @@ ecom/target/
 ecom/dbt_packages/
 ecom/logs/
 ecom/.user.ymllogs/
+logs/
