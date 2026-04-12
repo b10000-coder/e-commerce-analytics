@@ -1,0 +1,99 @@
+[0m15:53:41.761275 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111457ec0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111ce0980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111ce0680>]}
+
+
+============================== 15:53:41.764006 | 8992d520-3f40-4fe1-b9e8-629c37027ccf ==============================
+[0m15:53:41.764006 [info ] [MainThread]: Running with dbt=1.11.8
+[0m15:53:41.764349 [debug] [MainThread]: running dbt with arguments {'profiles_dir': '/Users/burakkurt/.dbt', 'debug': 'False', 'no_print': 'None', 'introspect': 'True', 'fail_fast': 'False', 'static_parser': 'True', 'warn_error': 'None', 'version_check': 'True', 'target_path': 'None', 'use_experimental_parser': 'False', 'cache_selected_only': 'False', 'indirect_selection': 'eager', 'empty': 'None', 'log_cache_events': 'False', 'log_path': 'logs', 'use_colors': 'True', 'invocation_command': 'dbt init ecom', 'quiet': 'False', 'printer_width': '80', 'partial_parse': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'send_anonymous_usage_stats': 'True', 'write_json': 'True', 'log_format': 'default'}
+[0m15:53:41.769114 [info ] [MainThread]: Creating dbt configuration folder at /Users/burakkurt/.dbt
+[0m15:53:41.770078 [debug] [MainThread]: Starter project path: /Users/burakkurt/data_engineering_projects/e-commerce-analytics/.venv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m15:53:41.773084 [info ] [MainThread]: 
+Your new dbt project "ecom" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m15:53:41.773518 [info ] [MainThread]: Setting up your profile.
+[0m15:54:31.183182 [error] [MainThread]: Encountered an error:
+
+[0m15:54:31.188817 [error] [MainThread]: Traceback (most recent call last):
+  File "/Users/burakkurt/data_engineering_projects/e-commerce-analytics/.venv/lib/python3.12/site-packages/dbt/cli/requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/burakkurt/data_engineering_projects/e-commerce-analytics/.venv/lib/python3.12/site-packages/dbt/cli/requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/burakkurt/data_engineering_projects/e-commerce-analytics/.venv/lib/python3.12/site-packages/dbt/cli/main.py", line 488, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "/Users/burakkurt/data_engineering_projects/e-commerce-analytics/.venv/lib/python3.12/site-packages/dbt/task/init.py", line 346, in run
+    self.setup_profile(profile_name)
+  File "/Users/burakkurt/data_engineering_projects/e-commerce-analytics/.venv/lib/python3.12/site-packages/dbt/task/init.py", line 261, in setup_profile
+    adapter = self.ask_for_adapter_choice()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/burakkurt/data_engineering_projects/e-commerce-analytics/.venv/lib/python3.12/site-packages/dbt/task/init.py", line 242, in ask_for_adapter_choice
+    numeric_choice = click.prompt(prompt_msg, type=click.INT)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/burakkurt/data_engineering_projects/e-commerce-analytics/.venv/lib/python3.12/site-packages/click/termui.py", line 171, in prompt
+    value = prompt_func(prompt)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/Users/burakkurt/data_engineering_projects/e-commerce-analytics/.venv/lib/python3.12/site-packages/click/termui.py", line 154, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m15:54:31.206706 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": false, "command_wall_clock_time": 49.48307, "process_in_blocks": "0", "process_kernel_time": 0.183808, "process_mem_max_rss": "109461504", "process_out_blocks": "0", "process_user_time": 1.031185}
+[0m15:54:31.207812 [debug] [MainThread]: Command `dbt init` failed at 15:54:31.207653 after 49.48 seconds
+[0m15:54:31.208415 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111563e00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111591c40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111d5b890>]}
+[0m15:54:31.208967 [debug] [MainThread]: Flushing usage events
+[0m15:54:33.635946 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:55:00.471539 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1048517c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1075f4890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1075f4590>]}
+
+
+============================== 15:55:00.474047 | b8e102a5-c54f-4dae-a2e0-bf72f0ca52d4 ==============================
+[0m15:55:00.474047 [info ] [MainThread]: Running with dbt=1.11.8
+[0m15:55:00.474381 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'quiet': 'False', 'partial_parse': 'True', 'printer_width': '80', 'use_experimental_parser': 'False', 'fail_fast': 'False', 'indirect_selection': 'eager', 'log_path': 'logs', 'log_cache_events': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_colors': 'True', 'profiles_dir': '/Users/burakkurt/.dbt', 'send_anonymous_usage_stats': 'True', 'cache_selected_only': 'False', 'write_json': 'True', 'no_print': 'None', 'warn_error': 'None', 'version_check': 'True', 'log_format': 'default', 'invocation_command': 'dbt init ecom', 'debug': 'False', 'empty': 'None'}
+[0m15:55:00.479486 [info ] [MainThread]: A project called ecom already exists here.
+[0m15:55:00.481033 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 0.045052126, "process_in_blocks": "0", "process_kernel_time": 0.103239, "process_mem_max_rss": "109510656", "process_out_blocks": "0", "process_user_time": 0.737951}
+[0m15:55:00.481421 [debug] [MainThread]: Command `dbt init` succeeded at 15:55:00.481361 after 0.05 seconds
+[0m15:55:00.481638 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10765c1d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10765e1b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1075f4620>]}
+[0m15:55:00.481835 [debug] [MainThread]: Flushing usage events
+[0m15:55:01.587175 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:55:16.043391 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107b87cb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x114ecc8c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x114ecc5c0>]}
+
+
+============================== 15:55:16.045756 | a4d6830b-3701-458b-82cd-5cfc064e15ac ==============================
+[0m15:55:16.045756 [info ] [MainThread]: Running with dbt=1.11.8
+[0m15:55:16.046089 [debug] [MainThread]: running dbt with arguments {'quiet': 'False', 'introspect': 'True', 'no_print': 'None', 'static_parser': 'True', 'use_experimental_parser': 'False', 'printer_width': '80', 'profiles_dir': '/Users/burakkurt/.dbt', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'write_json': 'True', 'target_path': 'None', 'invocation_command': 'dbt init ecom', 'empty': 'None', 'fail_fast': 'False', 'indirect_selection': 'eager', 'cache_selected_only': 'False', 'debug': 'False', 'log_path': 'logs', 'warn_error': 'None', 'version_check': 'True', 'send_anonymous_usage_stats': 'True', 'use_colors': 'True', 'log_format': 'default', 'partial_parse': 'True', 'log_cache_events': 'False'}
+[0m15:55:16.053517 [debug] [MainThread]: Starter project path: /Users/burakkurt/data_engineering_projects/e-commerce-analytics/.venv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m15:55:16.057025 [info ] [MainThread]: 
+Your new dbt project "ecom" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m15:55:16.057278 [info ] [MainThread]: Setting up your profile.
+[0m15:55:19.096736 [info ] [MainThread]: Profile ecom written to /Users/burakkurt/.dbt/profiles.yml using target's sample configuration. Once updated, you'll be able to start developing with dbt.
+[0m15:55:19.098974 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 3.0911944, "process_in_blocks": "0", "process_kernel_time": 0.125557, "process_mem_max_rss": "125534208", "process_out_blocks": "0", "process_user_time": 0.782515}
+[0m15:55:19.099359 [debug] [MainThread]: Command `dbt init` succeeded at 15:55:19.099284 after 3.09 seconds
+[0m15:55:19.099636 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x113e89c40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11584a8d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x114ecc650>]}
+[0m15:55:19.099923 [debug] [MainThread]: Flushing usage events
+[0m15:55:20.321234 [debug] [MainThread]: An error was encountered while trying to flush usage events
