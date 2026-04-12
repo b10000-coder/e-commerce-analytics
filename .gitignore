@@ -7,4 +7,4 @@ __pycache__/
 ecom/target/
 ecom/dbt_packages/
 ecom/logs/
-ecom/.user.yml
+ecom/.user.ymllogs/
