@@ -1,0 +1,2066 @@
+[0m16:05:15.166283 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107fa3020>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a3285c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a2f7c80>]}
+
+
+============================== 16:05:15.169144 | c1e051fe-2da2-4723-894a-d9f18a60ef10 ==============================
+[0m16:05:15.169144 [info ] [MainThread]: Running with dbt=1.11.8
+[0m16:05:15.169479 [debug] [MainThread]: running dbt with arguments {'use_colors': 'True', 'cache_selected_only': 'False', 'static_parser': 'True', 'no_print': 'None', 'fail_fast': 'False', 'introspect': 'True', 'log_format': 'default', 'target_path': 'None', 'warn_error': 'None', 'profiles_dir': '.', 'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'quiet': 'False', 'partial_parse': 'True', 'invocation_command': 'dbt build --profiles-dir .', 'debug': 'False', 'empty': 'False', 'write_json': 'True', 'log_path': '/Users/burakkurt/data_engineering_projects/e-commerce-analytics/ecom/logs', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80'}
+[0m16:05:15.280507 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'c1e051fe-2da2-4723-894a-d9f18a60ef10', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a824050>]}
+[0m16:05:15.312782 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'c1e051fe-2da2-4723-894a-d9f18a60ef10', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119f8eea0>]}
+[0m16:05:15.314476 [info ] [MainThread]: Registered adapter: duckdb=1.10.1
+[0m16:05:15.388549 [debug] [MainThread]: checksum: 7d524ac048c2100769df89d592e662e060a73ca564e31bd9c2a37efdfe8d8ab6, vars: {}, profile: , target: , version: 1.11.8
+[0m16:05:15.388992 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m16:05:15.389200 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'c1e051fe-2da2-4723-894a-d9f18a60ef10', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a86c5f0>]}
+[0m16:05:15.975429 [warn ] [MainThread]: [[33mWARNING[0m][MissingArgumentsPropertyInGenericTestDeprecation]: Deprecated
+functionality
+Found top-level arguments to test `accepted_values` defined on 'stg_customers'
+in package 'ecom' (models/staging/_schema.yml). Arguments to generic tests
+should be nested under the `arguments` property.
+[0m16:05:15.975764 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': 'c1e051fe-2da2-4723-894a-d9f18a60ef10', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11ab105c0>]}
+[0m16:05:16.116183 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.ecom.marts
+[0m16:05:16.121221 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c1e051fe-2da2-4723-894a-d9f18a60ef10', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11abfe750>]}
+[0m16:05:16.173796 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/burakkurt/data_engineering_projects/e-commerce-analytics/ecom/target/manifest.json
+[0m16:05:16.175225 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/burakkurt/data_engineering_projects/e-commerce-analytics/ecom/target/semantic_manifest.json
+[0m16:05:16.190047 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'c1e051fe-2da2-4723-894a-d9f18a60ef10', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11b046540>]}
+[0m16:05:16.190360 [info ] [MainThread]: Found 6 models, 30 data tests, 6 sources, 475 macros
+[0m16:05:16.192307 [info ] [MainThread]: 
+[0m16:05:16.192508 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m16:05:16.192669 [info ] [MainThread]: 
+[0m16:05:16.192917 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+[0m16:05:16.195412 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_ecom'
+[0m16:05:16.261871 [debug] [ThreadPool]: Using duckdb connection "list_ecom"
+[0m16:05:16.262126 [debug] [ThreadPool]: On list_ecom: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "connection_name": "list_ecom"} */
+
+    
+    select schema_name
+    from system.information_schema.schemata
+    
+    where lower(catalog_name) = '"ecom"'
+    
+  
+  
+[0m16:05:16.262287 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:05:16.271680 [debug] [ThreadPool]: SQL status: OK in 0.009 seconds
+[0m16:05:16.272442 [debug] [ThreadPool]: On list_ecom: Close
+[0m16:05:16.272827 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_ecom, now create_ecom_main_staging)
+[0m16:05:16.273096 [debug] [ThreadPool]: Creating schema "database: "ecom"
+schema: "main_staging"
+"
+[0m16:05:16.276556 [debug] [ThreadPool]: Using duckdb connection "create_ecom_main_staging"
+[0m16:05:16.276740 [debug] [ThreadPool]: On create_ecom_main_staging: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "connection_name": "create_ecom_main_staging"} */
+
+    
+        select type from duckdb_databases()
+        where lower(database_name)='ecom'
+        and type='sqlite'
+    
+  
+[0m16:05:16.276886 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:05:16.277563 [debug] [ThreadPool]: SQL status: OK in 0.001 seconds
+[0m16:05:16.278228 [debug] [ThreadPool]: Using duckdb connection "create_ecom_main_staging"
+[0m16:05:16.278375 [debug] [ThreadPool]: On create_ecom_main_staging: BEGIN
+[0m16:05:16.278589 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m16:05:16.278723 [debug] [ThreadPool]: Using duckdb connection "create_ecom_main_staging"
+[0m16:05:16.278860 [debug] [ThreadPool]: On create_ecom_main_staging: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "connection_name": "create_ecom_main_staging"} */
+
+    
+    
+        create schema if not exists "ecom"."main_staging"
+    
+[0m16:05:16.279106 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m16:05:16.279529 [debug] [ThreadPool]: On create_ecom_main_staging: COMMIT
+[0m16:05:16.279680 [debug] [ThreadPool]: Using duckdb connection "create_ecom_main_staging"
+[0m16:05:16.279810 [debug] [ThreadPool]: On create_ecom_main_staging: COMMIT
+[0m16:05:16.280224 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m16:05:16.280372 [debug] [ThreadPool]: On create_ecom_main_staging: Close
+[0m16:05:16.281005 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_ecom_main_staging, now list_ecom_main_staging)
+[0m16:05:16.283864 [debug] [ThreadPool]: Using duckdb connection "list_ecom_main_staging"
+[0m16:05:16.284040 [debug] [ThreadPool]: On list_ecom_main_staging: BEGIN
+[0m16:05:16.284184 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:05:16.284435 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m16:05:16.284586 [debug] [ThreadPool]: Using duckdb connection "list_ecom_main_staging"
+[0m16:05:16.284737 [debug] [ThreadPool]: On list_ecom_main_staging: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "connection_name": "list_ecom_main_staging"} */
+select
+      'ecom' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where lower(table_schema) = 'main_staging'
+    and lower(table_catalog) = 'ecom'
+  
+[0m16:05:16.286822 [debug] [ThreadPool]: SQL status: OK in 0.002 seconds
+[0m16:05:16.287466 [debug] [ThreadPool]: On list_ecom_main_staging: ROLLBACK
+[0m16:05:16.288330 [debug] [ThreadPool]: Failed to rollback 'list_ecom_main_staging'
+[0m16:05:16.288485 [debug] [ThreadPool]: On list_ecom_main_staging: Close
+[0m16:05:16.288727 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'c1e051fe-2da2-4723-894a-d9f18a60ef10', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11af6fb30>]}
+[0m16:05:16.288977 [debug] [MainThread]: Using duckdb connection "master"
+[0m16:05:16.289130 [debug] [MainThread]: On master: BEGIN
+[0m16:05:16.289266 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:05:16.289511 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m16:05:16.289655 [debug] [MainThread]: On master: COMMIT
+[0m16:05:16.289795 [debug] [MainThread]: Using duckdb connection "master"
+[0m16:05:16.289932 [debug] [MainThread]: On master: COMMIT
+[0m16:05:16.290137 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m16:05:16.290276 [debug] [MainThread]: On master: Close
+[0m16:05:16.291806 [debug] [Thread-1 (]: Began running node model.ecom.stg_customers
+[0m16:05:16.292009 [debug] [Thread-2 (]: Began running node model.ecom.stg_products
+[0m16:05:16.292186 [debug] [Thread-3 (]: Began running node model.ecom.stg_sellers
+[0m16:05:16.292554 [debug] [Thread-4 (]: Began running node model.ecom.stg_sessions
+[0m16:05:16.292419 [info ] [Thread-1 (]: 1 of 36 START sql view model main_staging.stg_customers ........................ [RUN]
+[0m16:05:16.292821 [info ] [Thread-2 (]: 2 of 36 START sql view model main_staging.stg_products ......................... [RUN]
+[0m16:05:16.293088 [info ] [Thread-3 (]: 3 of 36 START sql view model main_staging.stg_sellers .......................... [RUN]
+[0m16:05:16.293344 [info ] [Thread-4 (]: 4 of 36 START sql view model main_staging.stg_sessions ......................... [RUN]
+[0m16:05:16.293568 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_ecom_main_staging, now model.ecom.stg_customers)
+[0m16:05:16.293797 [debug] [Thread-2 (]: Acquiring new duckdb connection 'model.ecom.stg_products'
+[0m16:05:16.294006 [debug] [Thread-3 (]: Acquiring new duckdb connection 'model.ecom.stg_sellers'
+[0m16:05:16.294204 [debug] [Thread-4 (]: Acquiring new duckdb connection 'model.ecom.stg_sessions'
+[0m16:05:16.294372 [debug] [Thread-1 (]: Began compiling node model.ecom.stg_customers
+[0m16:05:16.294535 [debug] [Thread-2 (]: Began compiling node model.ecom.stg_products
+[0m16:05:16.294694 [debug] [Thread-3 (]: Began compiling node model.ecom.stg_sellers
+[0m16:05:16.294850 [debug] [Thread-4 (]: Began compiling node model.ecom.stg_sessions
+[0m16:05:16.298818 [debug] [Thread-1 (]: Writing injected SQL for node "model.ecom.stg_customers"
+[0m16:05:16.300583 [debug] [Thread-2 (]: Writing injected SQL for node "model.ecom.stg_products"
+[0m16:05:16.302174 [debug] [Thread-3 (]: Writing injected SQL for node "model.ecom.stg_sellers"
+[0m16:05:16.303785 [debug] [Thread-4 (]: Writing injected SQL for node "model.ecom.stg_sessions"
+[0m16:05:16.304581 [debug] [Thread-4 (]: Began executing node model.ecom.stg_sessions
+[0m16:05:16.304785 [debug] [Thread-2 (]: Began executing node model.ecom.stg_products
+[0m16:05:16.304974 [debug] [Thread-1 (]: Began executing node model.ecom.stg_customers
+[0m16:05:16.305148 [debug] [Thread-3 (]: Began executing node model.ecom.stg_sellers
+[0m16:05:16.322643 [debug] [Thread-2 (]: Writing runtime sql for node "model.ecom.stg_products"
+[0m16:05:16.323439 [debug] [Thread-4 (]: Writing runtime sql for node "model.ecom.stg_sessions"
+[0m16:05:16.325024 [debug] [Thread-1 (]: Writing runtime sql for node "model.ecom.stg_customers"
+[0m16:05:16.326573 [debug] [Thread-3 (]: Writing runtime sql for node "model.ecom.stg_sellers"
+[0m16:05:16.327354 [debug] [Thread-4 (]: Using duckdb connection "model.ecom.stg_sessions"
+[0m16:05:16.327597 [debug] [Thread-1 (]: Using duckdb connection "model.ecom.stg_customers"
+[0m16:05:16.327787 [debug] [Thread-4 (]: On model.ecom.stg_sessions: BEGIN
+[0m16:05:16.327967 [debug] [Thread-2 (]: Using duckdb connection "model.ecom.stg_products"
+[0m16:05:16.328131 [debug] [Thread-3 (]: Using duckdb connection "model.ecom.stg_sellers"
+[0m16:05:16.328297 [debug] [Thread-1 (]: On model.ecom.stg_customers: BEGIN
+[0m16:05:16.328480 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m16:05:16.328659 [debug] [Thread-2 (]: On model.ecom.stg_products: BEGIN
+[0m16:05:16.328825 [debug] [Thread-3 (]: On model.ecom.stg_sellers: BEGIN
+[0m16:05:16.328990 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:05:16.329295 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m16:05:16.329488 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m16:05:16.329674 [debug] [Thread-4 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.329958 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.330183 [debug] [Thread-4 (]: Using duckdb connection "model.ecom.stg_sessions"
+[0m16:05:16.330362 [debug] [Thread-2 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.330523 [debug] [Thread-1 (]: Using duckdb connection "model.ecom.stg_customers"
+[0m16:05:16.330686 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.330878 [debug] [Thread-4 (]: On model.ecom.stg_sessions: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "model.ecom.stg_sessions"} */
+
+  
+  create view "ecom"."main_staging"."stg_sessions__dbt_tmp" as (
+    /*
+  stg_sessions
+  ------------
+  - Null customer_id = anonymous session (kept, not filtered)
+  - Derives session_duration_mins for readability
+  - Casts is_converted to boolean
+*/
+
+with source as (
+    select * from "ecom"."raw"."sessions"
+),
+
+final as (
+    select
+        session_id,
+        nullif(trim(customer_id), '')               as customer_id,   -- preserve anonymous
+        cast(session_date as date)                  as session_date,
+        lower(platform)                             as platform,
+        lower(device_type)                          as device_type,
+        cast(page_views as integer)                 as page_views,
+        cast(duration_seconds as integer)           as duration_seconds,
+        round(cast(duration_seconds as decimal) / 60, 2) as duration_mins,
+        cast(is_converted as boolean)               as is_converted,
+        nullif(trim(utm_source), '')                as utm_source
+    from source
+)
+
+select * from final
+  );
+
+[0m16:05:16.331070 [debug] [Thread-2 (]: Using duckdb connection "model.ecom.stg_products"
+[0m16:05:16.331265 [debug] [Thread-1 (]: On model.ecom.stg_customers: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "model.ecom.stg_customers"} */
+
+  
+  create view "ecom"."main_staging"."stg_customers__dbt_tmp" as (
+    /*
+  stg_customers
+  -------------
+  - Renames columns to project convention
+  - Casts signup_date to DATE
+  - Deduplicates re-registered customers (keeps the earliest signup per email)
+  - Replaces empty city strings with NULL
+  - Excludes soft-deleted records
+*/
+
+with source as (
+    select * from "ecom"."raw"."customers"
+),
+
+renamed as (
+    select
+        customer_id,
+        first_name,
+        last_name,
+        lower(trim(email))                      as email,
+        phone,
+        nullif(trim(city), '')                  as city,
+        country,
+        lower(customer_tier)                    as customer_tier,
+        cast(signup_date as date)               as signup_date,
+        cast(is_deleted as boolean)             as is_deleted
+    from source
+),
+
+deduped as (
+    -- Keep earliest signup per email (first registration wins)
+    select *,
+        row_number() over (
+            partition by email
+            order by signup_date asc
+        ) as rn
+    from renamed
+),
+
+final as (
+    select
+        customer_id,
+        first_name,
+        last_name,
+        email,
+        phone,
+        city,
+        country,
+        customer_tier,
+        signup_date,
+        is_deleted
+    from deduped
+    where rn = 1
+      and is_deleted = false
+)
+
+select * from final
+  );
+
+[0m16:05:16.331461 [debug] [Thread-3 (]: Using duckdb connection "model.ecom.stg_sellers"
+[0m16:05:16.331764 [debug] [Thread-2 (]: On model.ecom.stg_products: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "model.ecom.stg_products"} */
+
+  
+  create view "ecom"."main_staging"."stg_products__dbt_tmp" as (
+    /*
+  stg_products
+  ------------
+  - Casts price columns and boolean
+  - Derives gross_margin_pct for later mart use
+  - Filters inactive products are kept (marts can filter by is_active)
+*/
+
+with source as (
+    select * from "ecom"."raw"."products"
+),
+
+final as (
+    select
+        product_id,
+        trim(product_name)                                  as product_name,
+        trim(category)                                      as category,
+        trim(subcategory)                                   as subcategory,
+        seller_id,
+        cast(list_price as decimal(10,2))                   as list_price,
+        cast(cost_price as decimal(10,2))                   as cost_price,
+        round(
+            (cast(list_price as decimal(10,2)) - cast(cost_price as decimal(10,2)))
+            / nullif(cast(list_price as decimal(10,2)), 0),
+            4
+        )                                                   as gross_margin_pct,
+        cast(is_active as boolean)                          as is_active,
+        cast(stock_qty as integer)                          as stock_qty,
+        cast(created_at as date)                            as created_at
+    from source
+)
+
+select * from final
+  );
+
+[0m16:05:16.332143 [debug] [Thread-3 (]: On model.ecom.stg_sellers: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "model.ecom.stg_sellers"} */
+
+  
+  create view "ecom"."main_staging"."stg_sellers__dbt_tmp" as (
+    /*
+  stg_sellers
+  -----------
+  - Casts joined_date to DATE
+  - Casts is_verified to boolean
+  - Standardises category casing
+*/
+
+with source as (
+    select * from "ecom"."raw"."sellers"
+),
+
+final as (
+    select
+        seller_id,
+        trim(seller_name)                       as seller_name,
+        trim(category)                          as category,
+        city,
+        cast(is_verified as boolean)            as is_verified,
+        cast(joined_date as date)               as joined_date,
+        cast(rating as decimal(3,1))            as rating,
+        cast(total_reviews as integer)          as total_reviews
+    from source
+)
+
+select * from final
+  );
+
+[0m16:05:16.332518 [debug] [Thread-4 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.336013 [debug] [Thread-4 (]: Using duckdb connection "model.ecom.stg_sessions"
+[0m16:05:16.336242 [debug] [Thread-4 (]: On model.ecom.stg_sessions: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "model.ecom.stg_sessions"} */
+alter view "ecom"."main_staging"."stg_sessions__dbt_tmp" rename to "stg_sessions"
+[0m16:05:16.336521 [debug] [Thread-3 (]: SQL status: OK in 0.004 seconds
+[0m16:05:16.336713 [debug] [Thread-1 (]: SQL status: OK in 0.005 seconds
+[0m16:05:16.336881 [debug] [Thread-2 (]: SQL status: OK in 0.005 seconds
+[0m16:05:16.338372 [debug] [Thread-3 (]: Using duckdb connection "model.ecom.stg_sellers"
+[0m16:05:16.339786 [debug] [Thread-1 (]: Using duckdb connection "model.ecom.stg_customers"
+[0m16:05:16.339944 [debug] [Thread-4 (]: SQL status: OK in 0.004 seconds
+[0m16:05:16.341442 [debug] [Thread-2 (]: Using duckdb connection "model.ecom.stg_products"
+[0m16:05:16.341632 [debug] [Thread-3 (]: On model.ecom.stg_sellers: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "model.ecom.stg_sellers"} */
+alter view "ecom"."main_staging"."stg_sellers__dbt_tmp" rename to "stg_sellers"
+[0m16:05:16.341827 [debug] [Thread-1 (]: On model.ecom.stg_customers: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "model.ecom.stg_customers"} */
+alter view "ecom"."main_staging"."stg_customers__dbt_tmp" rename to "stg_customers"
+[0m16:05:16.347635 [debug] [Thread-4 (]: On model.ecom.stg_sessions: COMMIT
+[0m16:05:16.347844 [debug] [Thread-2 (]: On model.ecom.stg_products: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "model.ecom.stg_products"} */
+alter view "ecom"."main_staging"."stg_products__dbt_tmp" rename to "stg_products"
+[0m16:05:16.348215 [debug] [Thread-4 (]: Using duckdb connection "model.ecom.stg_sessions"
+[0m16:05:16.348419 [debug] [Thread-3 (]: SQL status: OK in 0.000 seconds
+[0m16:05:16.348593 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m16:05:16.348811 [debug] [Thread-4 (]: On model.ecom.stg_sessions: COMMIT
+[0m16:05:16.349492 [debug] [Thread-3 (]: On model.ecom.stg_sellers: COMMIT
+[0m16:05:16.350221 [debug] [Thread-1 (]: On model.ecom.stg_customers: COMMIT
+[0m16:05:16.350447 [debug] [Thread-2 (]: SQL status: OK in 0.002 seconds
+[0m16:05:16.350731 [debug] [Thread-3 (]: Using duckdb connection "model.ecom.stg_sellers"
+[0m16:05:16.350942 [debug] [Thread-4 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.351122 [debug] [Thread-1 (]: Using duckdb connection "model.ecom.stg_customers"
+[0m16:05:16.351811 [debug] [Thread-2 (]: On model.ecom.stg_products: COMMIT
+[0m16:05:16.351994 [debug] [Thread-3 (]: On model.ecom.stg_sellers: COMMIT
+[0m16:05:16.355504 [debug] [Thread-4 (]: Using duckdb connection "model.ecom.stg_sessions"
+[0m16:05:16.355705 [debug] [Thread-1 (]: On model.ecom.stg_customers: COMMIT
+[0m16:05:16.355891 [debug] [Thread-2 (]: Using duckdb connection "model.ecom.stg_products"
+[0m16:05:16.356121 [debug] [Thread-4 (]: On model.ecom.stg_sessions: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "model.ecom.stg_sessions"} */
+
+      drop view if exists "ecom"."main_staging"."stg_sessions__dbt_backup" cascade
+    
+[0m16:05:16.356352 [debug] [Thread-2 (]: On model.ecom.stg_products: COMMIT
+[0m16:05:16.356524 [debug] [Thread-3 (]: SQL status: OK in 0.000 seconds
+[0m16:05:16.356690 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m16:05:16.356969 [debug] [Thread-4 (]: SQL status: OK in 0.000 seconds
+[0m16:05:16.358388 [debug] [Thread-3 (]: Using duckdb connection "model.ecom.stg_sellers"
+[0m16:05:16.358634 [debug] [Thread-2 (]: SQL status: OK in 0.002 seconds
+[0m16:05:16.359906 [debug] [Thread-1 (]: Using duckdb connection "model.ecom.stg_customers"
+[0m16:05:16.361096 [debug] [Thread-4 (]: On model.ecom.stg_sessions: Close
+[0m16:05:16.361298 [debug] [Thread-3 (]: On model.ecom.stg_sellers: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "model.ecom.stg_sellers"} */
+
+      drop view if exists "ecom"."main_staging"."stg_sellers__dbt_backup" cascade
+    
+[0m16:05:16.362451 [debug] [Thread-2 (]: Using duckdb connection "model.ecom.stg_products"
+[0m16:05:16.362640 [debug] [Thread-1 (]: On model.ecom.stg_customers: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "model.ecom.stg_customers"} */
+
+      drop view if exists "ecom"."main_staging"."stg_customers__dbt_backup" cascade
+    
+[0m16:05:16.363313 [debug] [Thread-2 (]: On model.ecom.stg_products: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "model.ecom.stg_products"} */
+
+      drop view if exists "ecom"."main_staging"."stg_products__dbt_backup" cascade
+    
+[0m16:05:16.363490 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.364465 [debug] [Thread-3 (]: On model.ecom.stg_sellers: Close
+[0m16:05:16.364664 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.364953 [debug] [Thread-2 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.365554 [debug] [Thread-1 (]: On model.ecom.stg_customers: Close
+[0m16:05:16.366200 [debug] [Thread-2 (]: On model.ecom.stg_products: Close
+[0m16:05:16.366410 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'c1e051fe-2da2-4723-894a-d9f18a60ef10', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11acc6bd0>]}
+[0m16:05:16.366583 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'c1e051fe-2da2-4723-894a-d9f18a60ef10', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11ac8c4a0>]}
+[0m16:05:16.366831 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'c1e051fe-2da2-4723-894a-d9f18a60ef10', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11b4a3710>]}
+[0m16:05:16.367045 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'c1e051fe-2da2-4723-894a-d9f18a60ef10', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11a806ff0>]}
+[0m16:05:16.367347 [info ] [Thread-4 (]: 4 of 36 OK created sql view model main_staging.stg_sessions .................... [[32mOK[0m in 0.07s]
+[0m16:05:16.367666 [info ] [Thread-3 (]: 3 of 36 OK created sql view model main_staging.stg_sellers ..................... [[32mOK[0m in 0.07s]
+[0m16:05:16.367980 [info ] [Thread-1 (]: 1 of 36 OK created sql view model main_staging.stg_customers ................... [[32mOK[0m in 0.07s]
+[0m16:05:16.368277 [info ] [Thread-2 (]: 2 of 36 OK created sql view model main_staging.stg_products .................... [[32mOK[0m in 0.07s]
+[0m16:05:16.368572 [debug] [Thread-4 (]: Finished running node model.ecom.stg_sessions
+[0m16:05:16.368810 [debug] [Thread-3 (]: Finished running node model.ecom.stg_sellers
+[0m16:05:16.369051 [debug] [Thread-1 (]: Finished running node model.ecom.stg_customers
+[0m16:05:16.369284 [debug] [Thread-2 (]: Finished running node model.ecom.stg_products
+[0m16:05:16.369612 [debug] [Thread-4 (]: Began running node test.ecom.accepted_values_stg_sessions_device_type__mobile__desktop__tablet.bd497599d4
+[0m16:05:16.369813 [debug] [Thread-3 (]: Began running node test.ecom.accepted_values_stg_sessions_platform__ios__android__web.eeae14ec9e
+[0m16:05:16.370046 [debug] [Thread-1 (]: Began running node test.ecom.not_null_stg_sessions_session_id.2e872a126d
+[0m16:05:16.370279 [debug] [Thread-2 (]: Began running node test.ecom.unique_stg_sessions_session_id.ce45726d03
+[0m16:05:16.370495 [info ] [Thread-4 (]: 5 of 36 START test accepted_values_stg_sessions_device_type__mobile__desktop__tablet  [RUN]
+[0m16:05:16.370694 [info ] [Thread-3 (]: 6 of 36 START test accepted_values_stg_sessions_platform__ios__android__web .... [RUN]
+[0m16:05:16.370887 [info ] [Thread-1 (]: 7 of 36 START test not_null_stg_sessions_session_id ............................ [RUN]
+[0m16:05:16.371080 [info ] [Thread-2 (]: 8 of 36 START test unique_stg_sessions_session_id .............................. [RUN]
+[0m16:05:16.371291 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.ecom.stg_sessions, now test.ecom.accepted_values_stg_sessions_device_type__mobile__desktop__tablet.bd497599d4)
+[0m16:05:16.371480 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.ecom.stg_sellers, now test.ecom.accepted_values_stg_sessions_platform__ios__android__web.eeae14ec9e)
+[0m16:05:16.371652 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.ecom.stg_customers, now test.ecom.not_null_stg_sessions_session_id.2e872a126d)
+[0m16:05:16.371824 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.ecom.stg_products, now test.ecom.unique_stg_sessions_session_id.ce45726d03)
+[0m16:05:16.371994 [debug] [Thread-4 (]: Began compiling node test.ecom.accepted_values_stg_sessions_device_type__mobile__desktop__tablet.bd497599d4
+[0m16:05:16.372165 [debug] [Thread-3 (]: Began compiling node test.ecom.accepted_values_stg_sessions_platform__ios__android__web.eeae14ec9e
+[0m16:05:16.372328 [debug] [Thread-1 (]: Began compiling node test.ecom.not_null_stg_sessions_session_id.2e872a126d
+[0m16:05:16.372484 [debug] [Thread-2 (]: Began compiling node test.ecom.unique_stg_sessions_session_id.ce45726d03
+[0m16:05:16.375200 [debug] [Thread-4 (]: Writing injected SQL for node "test.ecom.accepted_values_stg_sessions_device_type__mobile__desktop__tablet.bd497599d4"
+[0m16:05:16.377529 [debug] [Thread-3 (]: Writing injected SQL for node "test.ecom.accepted_values_stg_sessions_platform__ios__android__web.eeae14ec9e"
+[0m16:05:16.381996 [debug] [Thread-1 (]: Writing injected SQL for node "test.ecom.not_null_stg_sessions_session_id.2e872a126d"
+[0m16:05:16.385296 [debug] [Thread-2 (]: Writing injected SQL for node "test.ecom.unique_stg_sessions_session_id.ce45726d03"
+[0m16:05:16.385986 [debug] [Thread-1 (]: Began executing node test.ecom.not_null_stg_sessions_session_id.2e872a126d
+[0m16:05:16.392175 [debug] [Thread-2 (]: Began executing node test.ecom.unique_stg_sessions_session_id.ce45726d03
+[0m16:05:16.395048 [debug] [Thread-1 (]: Writing runtime sql for node "test.ecom.not_null_stg_sessions_session_id.2e872a126d"
+[0m16:05:16.395245 [debug] [Thread-3 (]: Began executing node test.ecom.accepted_values_stg_sessions_platform__ios__android__web.eeae14ec9e
+[0m16:05:16.395421 [debug] [Thread-4 (]: Began executing node test.ecom.accepted_values_stg_sessions_device_type__mobile__desktop__tablet.bd497599d4
+[0m16:05:16.397785 [debug] [Thread-2 (]: Writing runtime sql for node "test.ecom.unique_stg_sessions_session_id.ce45726d03"
+[0m16:05:16.399101 [debug] [Thread-3 (]: Writing runtime sql for node "test.ecom.accepted_values_stg_sessions_platform__ios__android__web.eeae14ec9e"
+[0m16:05:16.400300 [debug] [Thread-4 (]: Writing runtime sql for node "test.ecom.accepted_values_stg_sessions_device_type__mobile__desktop__tablet.bd497599d4"
+[0m16:05:16.400739 [debug] [Thread-1 (]: Using duckdb connection "test.ecom.not_null_stg_sessions_session_id.2e872a126d"
+[0m16:05:16.400927 [debug] [Thread-1 (]: On test.ecom.not_null_stg_sessions_session_id.2e872a126d: BEGIN
+[0m16:05:16.401094 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:05:16.401443 [debug] [Thread-2 (]: Using duckdb connection "test.ecom.unique_stg_sessions_session_id.ce45726d03"
+[0m16:05:16.401632 [debug] [Thread-2 (]: On test.ecom.unique_stg_sessions_session_id.ce45726d03: BEGIN
+[0m16:05:16.401798 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m16:05:16.402044 [debug] [Thread-3 (]: Using duckdb connection "test.ecom.accepted_values_stg_sessions_platform__ios__android__web.eeae14ec9e"
+[0m16:05:16.402215 [debug] [Thread-3 (]: On test.ecom.accepted_values_stg_sessions_platform__ios__android__web.eeae14ec9e: BEGIN
+[0m16:05:16.402370 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m16:05:16.402603 [debug] [Thread-2 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.402770 [debug] [Thread-2 (]: Using duckdb connection "test.ecom.unique_stg_sessions_session_id.ce45726d03"
+[0m16:05:16.402942 [debug] [Thread-2 (]: On test.ecom.unique_stg_sessions_session_id.ce45726d03: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.unique_stg_sessions_session_id.ce45726d03"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    session_id as unique_field,
+    count(*) as n_records
+
+from "ecom"."main_staging"."stg_sessions"
+where session_id is not null
+group by session_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.403206 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m16:05:16.403369 [debug] [Thread-1 (]: Using duckdb connection "test.ecom.not_null_stg_sessions_session_id.2e872a126d"
+[0m16:05:16.403547 [debug] [Thread-1 (]: On test.ecom.not_null_stg_sessions_session_id.2e872a126d: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.not_null_stg_sessions_session_id.2e872a126d"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select session_id
+from "ecom"."main_staging"."stg_sessions"
+where session_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.403731 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.403941 [debug] [Thread-4 (]: Using duckdb connection "test.ecom.accepted_values_stg_sessions_device_type__mobile__desktop__tablet.bd497599d4"
+[0m16:05:16.404170 [debug] [Thread-3 (]: Using duckdb connection "test.ecom.accepted_values_stg_sessions_platform__ios__android__web.eeae14ec9e"
+[0m16:05:16.404375 [debug] [Thread-4 (]: On test.ecom.accepted_values_stg_sessions_device_type__mobile__desktop__tablet.bd497599d4: BEGIN
+[0m16:05:16.404619 [debug] [Thread-3 (]: On test.ecom.accepted_values_stg_sessions_platform__ios__android__web.eeae14ec9e: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.accepted_values_stg_sessions_platform__ios__android__web.eeae14ec9e"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        platform as value_field,
+        count(*) as n_records
+
+    from "ecom"."main_staging"."stg_sessions"
+    group by platform
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'ios','android','web'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.404846 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m16:05:16.405049 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.407217 [debug] [Thread-1 (]: On test.ecom.not_null_stg_sessions_session_id.2e872a126d: ROLLBACK
+[0m16:05:16.407476 [debug] [Thread-4 (]: SQL status: OK in 0.003 seconds
+[0m16:05:16.407670 [debug] [Thread-2 (]: SQL status: OK in 0.005 seconds
+[0m16:05:16.408126 [debug] [Thread-1 (]: Failed to rollback 'test.ecom.not_null_stg_sessions_session_id.2e872a126d'
+[0m16:05:16.408297 [debug] [Thread-4 (]: Using duckdb connection "test.ecom.accepted_values_stg_sessions_device_type__mobile__desktop__tablet.bd497599d4"
+[0m16:05:16.408476 [debug] [Thread-3 (]: SQL status: OK in 0.003 seconds
+[0m16:05:16.408703 [debug] [Thread-1 (]: On test.ecom.not_null_stg_sessions_session_id.2e872a126d: Close
+[0m16:05:16.409388 [debug] [Thread-2 (]: On test.ecom.unique_stg_sessions_session_id.ce45726d03: ROLLBACK
+[0m16:05:16.409599 [debug] [Thread-4 (]: On test.ecom.accepted_values_stg_sessions_device_type__mobile__desktop__tablet.bd497599d4: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.accepted_values_stg_sessions_device_type__mobile__desktop__tablet.bd497599d4"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        device_type as value_field,
+        count(*) as n_records
+
+    from "ecom"."main_staging"."stg_sessions"
+    group by device_type
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'mobile','desktop','tablet'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.410357 [debug] [Thread-3 (]: On test.ecom.accepted_values_stg_sessions_platform__ios__android__web.eeae14ec9e: ROLLBACK
+[0m16:05:16.410842 [debug] [Thread-2 (]: Failed to rollback 'test.ecom.unique_stg_sessions_session_id.ce45726d03'
+[0m16:05:16.411204 [info ] [Thread-1 (]: 7 of 36 PASS not_null_stg_sessions_session_id .................................. [[32mPASS[0m in 0.04s]
+[0m16:05:16.411711 [debug] [Thread-3 (]: Failed to rollback 'test.ecom.accepted_values_stg_sessions_platform__ios__android__web.eeae14ec9e'
+[0m16:05:16.411894 [debug] [Thread-2 (]: On test.ecom.unique_stg_sessions_session_id.ce45726d03: Close
+[0m16:05:16.412080 [debug] [Thread-4 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.412316 [debug] [Thread-1 (]: Finished running node test.ecom.not_null_stg_sessions_session_id.2e872a126d
+[0m16:05:16.412486 [debug] [Thread-3 (]: On test.ecom.accepted_values_stg_sessions_platform__ios__android__web.eeae14ec9e: Close
+[0m16:05:16.413394 [debug] [Thread-4 (]: On test.ecom.accepted_values_stg_sessions_device_type__mobile__desktop__tablet.bd497599d4: ROLLBACK
+[0m16:05:16.413584 [debug] [Thread-1 (]: Began running node test.ecom.not_null_stg_sellers_rating.973b52995f
+[0m16:05:16.412744 [info ] [Thread-2 (]: 8 of 36 PASS unique_stg_sessions_session_id .................................... [[32mPASS[0m in 0.04s]
+[0m16:05:16.414357 [debug] [Thread-4 (]: Failed to rollback 'test.ecom.accepted_values_stg_sessions_device_type__mobile__desktop__tablet.bd497599d4'
+[0m16:05:16.413924 [info ] [Thread-3 (]: 6 of 36 PASS accepted_values_stg_sessions_platform__ios__android__web .......... [[32mPASS[0m in 0.04s]
+[0m16:05:16.414540 [info ] [Thread-1 (]: 9 of 36 START test not_null_stg_sellers_rating ................................. [RUN]
+[0m16:05:16.414844 [debug] [Thread-2 (]: Finished running node test.ecom.unique_stg_sessions_session_id.ce45726d03
+[0m16:05:16.415020 [debug] [Thread-4 (]: On test.ecom.accepted_values_stg_sessions_device_type__mobile__desktop__tablet.bd497599d4: Close
+[0m16:05:16.415240 [debug] [Thread-3 (]: Finished running node test.ecom.accepted_values_stg_sessions_platform__ios__android__web.eeae14ec9e
+[0m16:05:16.415425 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.ecom.not_null_stg_sessions_session_id.2e872a126d, now test.ecom.not_null_stg_sellers_rating.973b52995f)
+[0m16:05:16.415607 [debug] [Thread-2 (]: Began running node test.ecom.not_null_stg_sellers_seller_id.35d0bce315
+[0m16:05:16.415859 [info ] [Thread-4 (]: 5 of 36 PASS accepted_values_stg_sessions_device_type__mobile__desktop__tablet . [[32mPASS[0m in 0.04s]
+[0m16:05:16.416060 [debug] [Thread-3 (]: Began running node test.ecom.unique_stg_sellers_seller_id.cb2e34d4b8
+[0m16:05:16.416272 [debug] [Thread-1 (]: Began compiling node test.ecom.not_null_stg_sellers_rating.973b52995f
+[0m16:05:16.416488 [info ] [Thread-2 (]: 10 of 36 START test not_null_stg_sellers_seller_id ............................. [RUN]
+[0m16:05:16.416743 [debug] [Thread-4 (]: Finished running node test.ecom.accepted_values_stg_sessions_device_type__mobile__desktop__tablet.bd497599d4
+[0m16:05:16.416910 [info ] [Thread-3 (]: 11 of 36 START test unique_stg_sellers_seller_id ............................... [RUN]
+[0m16:05:16.419344 [debug] [Thread-1 (]: Writing injected SQL for node "test.ecom.not_null_stg_sellers_rating.973b52995f"
+[0m16:05:16.419618 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.ecom.unique_stg_sessions_session_id.ce45726d03, now test.ecom.not_null_stg_sellers_seller_id.35d0bce315)
+[0m16:05:16.419841 [debug] [Thread-4 (]: Began running node test.ecom.accepted_values_stg_customers_customer_tier__bronze__silver__gold.414fa1ad40
+[0m16:05:16.420027 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.ecom.accepted_values_stg_sessions_platform__ios__android__web.eeae14ec9e, now test.ecom.unique_stg_sellers_seller_id.cb2e34d4b8)
+[0m16:05:16.420296 [debug] [Thread-2 (]: Began compiling node test.ecom.not_null_stg_sellers_seller_id.35d0bce315
+[0m16:05:16.420483 [info ] [Thread-4 (]: 12 of 36 START test accepted_values_stg_customers_customer_tier__bronze__silver__gold  [RUN]
+[0m16:05:16.420848 [debug] [Thread-3 (]: Began compiling node test.ecom.unique_stg_sellers_seller_id.cb2e34d4b8
+[0m16:05:16.423775 [debug] [Thread-2 (]: Writing injected SQL for node "test.ecom.not_null_stg_sellers_seller_id.35d0bce315"
+[0m16:05:16.424016 [debug] [Thread-1 (]: Began executing node test.ecom.not_null_stg_sellers_rating.973b52995f
+[0m16:05:16.424291 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.ecom.accepted_values_stg_sessions_device_type__mobile__desktop__tablet.bd497599d4, now test.ecom.accepted_values_stg_customers_customer_tier__bronze__silver__gold.414fa1ad40)
+[0m16:05:16.426285 [debug] [Thread-3 (]: Writing injected SQL for node "test.ecom.unique_stg_sellers_seller_id.cb2e34d4b8"
+[0m16:05:16.427600 [debug] [Thread-1 (]: Writing runtime sql for node "test.ecom.not_null_stg_sellers_rating.973b52995f"
+[0m16:05:16.427831 [debug] [Thread-4 (]: Began compiling node test.ecom.accepted_values_stg_customers_customer_tier__bronze__silver__gold.414fa1ad40
+[0m16:05:16.428129 [debug] [Thread-2 (]: Began executing node test.ecom.not_null_stg_sellers_seller_id.35d0bce315
+[0m16:05:16.430256 [debug] [Thread-4 (]: Writing injected SQL for node "test.ecom.accepted_values_stg_customers_customer_tier__bronze__silver__gold.414fa1ad40"
+[0m16:05:16.431554 [debug] [Thread-2 (]: Writing runtime sql for node "test.ecom.not_null_stg_sellers_seller_id.35d0bce315"
+[0m16:05:16.431795 [debug] [Thread-3 (]: Began executing node test.ecom.unique_stg_sellers_seller_id.cb2e34d4b8
+[0m16:05:16.432034 [debug] [Thread-1 (]: Using duckdb connection "test.ecom.not_null_stg_sellers_rating.973b52995f"
+[0m16:05:16.433337 [debug] [Thread-3 (]: Writing runtime sql for node "test.ecom.unique_stg_sellers_seller_id.cb2e34d4b8"
+[0m16:05:16.433614 [debug] [Thread-1 (]: On test.ecom.not_null_stg_sellers_rating.973b52995f: BEGIN
+[0m16:05:16.433935 [debug] [Thread-4 (]: Began executing node test.ecom.accepted_values_stg_customers_customer_tier__bronze__silver__gold.414fa1ad40
+[0m16:05:16.434168 [debug] [Thread-2 (]: Using duckdb connection "test.ecom.not_null_stg_sellers_seller_id.35d0bce315"
+[0m16:05:16.434360 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:05:16.435691 [debug] [Thread-4 (]: Writing runtime sql for node "test.ecom.accepted_values_stg_customers_customer_tier__bronze__silver__gold.414fa1ad40"
+[0m16:05:16.435887 [debug] [Thread-2 (]: On test.ecom.not_null_stg_sellers_seller_id.35d0bce315: BEGIN
+[0m16:05:16.436080 [debug] [Thread-3 (]: Using duckdb connection "test.ecom.unique_stg_sellers_seller_id.cb2e34d4b8"
+[0m16:05:16.436413 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m16:05:16.436629 [debug] [Thread-3 (]: On test.ecom.unique_stg_sellers_seller_id.cb2e34d4b8: BEGIN
+[0m16:05:16.436817 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m16:05:16.437156 [debug] [Thread-4 (]: Using duckdb connection "test.ecom.accepted_values_stg_customers_customer_tier__bronze__silver__gold.414fa1ad40"
+[0m16:05:16.437363 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m16:05:16.437552 [debug] [Thread-2 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.437714 [debug] [Thread-1 (]: Using duckdb connection "test.ecom.not_null_stg_sellers_rating.973b52995f"
+[0m16:05:16.437898 [debug] [Thread-4 (]: On test.ecom.accepted_values_stg_customers_customer_tier__bronze__silver__gold.414fa1ad40: BEGIN
+[0m16:05:16.438115 [debug] [Thread-2 (]: Using duckdb connection "test.ecom.not_null_stg_sellers_seller_id.35d0bce315"
+[0m16:05:16.438294 [debug] [Thread-1 (]: On test.ecom.not_null_stg_sellers_rating.973b52995f: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.not_null_stg_sellers_rating.973b52995f"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select rating
+from "ecom"."main_staging"."stg_sellers"
+where rating is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.438465 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.438633 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m16:05:16.438819 [debug] [Thread-2 (]: On test.ecom.not_null_stg_sellers_seller_id.35d0bce315: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.not_null_stg_sellers_seller_id.35d0bce315"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select seller_id
+from "ecom"."main_staging"."stg_sellers"
+where seller_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.439059 [debug] [Thread-3 (]: Using duckdb connection "test.ecom.unique_stg_sellers_seller_id.cb2e34d4b8"
+[0m16:05:16.439405 [debug] [Thread-4 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.439600 [debug] [Thread-3 (]: On test.ecom.unique_stg_sellers_seller_id.cb2e34d4b8: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.unique_stg_sellers_seller_id.cb2e34d4b8"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    seller_id as unique_field,
+    count(*) as n_records
+
+from "ecom"."main_staging"."stg_sellers"
+where seller_id is not null
+group by seller_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.439830 [debug] [Thread-4 (]: Using duckdb connection "test.ecom.accepted_values_stg_customers_customer_tier__bronze__silver__gold.414fa1ad40"
+[0m16:05:16.440005 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.440167 [debug] [Thread-2 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.440414 [debug] [Thread-4 (]: On test.ecom.accepted_values_stg_customers_customer_tier__bronze__silver__gold.414fa1ad40: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.accepted_values_stg_customers_customer_tier__bronze__silver__gold.414fa1ad40"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        customer_tier as value_field,
+        count(*) as n_records
+
+    from "ecom"."main_staging"."stg_customers"
+    group by customer_tier
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'bronze','silver','gold'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.441294 [debug] [Thread-2 (]: On test.ecom.not_null_stg_sellers_seller_id.35d0bce315: ROLLBACK
+[0m16:05:16.441552 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.442239 [debug] [Thread-1 (]: On test.ecom.not_null_stg_sellers_rating.973b52995f: ROLLBACK
+[0m16:05:16.442803 [debug] [Thread-2 (]: Failed to rollback 'test.ecom.not_null_stg_sellers_seller_id.35d0bce315'
+[0m16:05:16.443323 [debug] [Thread-1 (]: Failed to rollback 'test.ecom.not_null_stg_sellers_rating.973b52995f'
+[0m16:05:16.443532 [debug] [Thread-2 (]: On test.ecom.not_null_stg_sellers_seller_id.35d0bce315: Close
+[0m16:05:16.444699 [debug] [Thread-3 (]: On test.ecom.unique_stg_sellers_seller_id.cb2e34d4b8: ROLLBACK
+[0m16:05:16.445110 [debug] [Thread-1 (]: On test.ecom.not_null_stg_sellers_rating.973b52995f: Close
+[0m16:05:16.445711 [debug] [Thread-3 (]: Failed to rollback 'test.ecom.unique_stg_sellers_seller_id.cb2e34d4b8'
+[0m16:05:16.446037 [info ] [Thread-2 (]: 10 of 36 PASS not_null_stg_sellers_seller_id ................................... [[32mPASS[0m in 0.03s]
+[0m16:05:16.446499 [debug] [Thread-4 (]: SQL status: OK in 0.005 seconds
+[0m16:05:16.446338 [info ] [Thread-1 (]: 9 of 36 PASS not_null_stg_sellers_rating ....................................... [[32mPASS[0m in 0.03s]
+[0m16:05:16.446741 [debug] [Thread-3 (]: On test.ecom.unique_stg_sellers_seller_id.cb2e34d4b8: Close
+[0m16:05:16.447002 [debug] [Thread-2 (]: Finished running node test.ecom.not_null_stg_sellers_seller_id.35d0bce315
+[0m16:05:16.447295 [debug] [Thread-1 (]: Finished running node test.ecom.not_null_stg_sellers_rating.973b52995f
+[0m16:05:16.447977 [debug] [Thread-4 (]: On test.ecom.accepted_values_stg_customers_customer_tier__bronze__silver__gold.414fa1ad40: ROLLBACK
+[0m16:05:16.448236 [info ] [Thread-3 (]: 11 of 36 PASS unique_stg_sellers_seller_id ..................................... [[32mPASS[0m in 0.03s]
+[0m16:05:16.448472 [debug] [Thread-2 (]: Began running node test.ecom.not_null_stg_customers_customer_id.e2cfb1f9aa
+[0m16:05:16.448704 [debug] [Thread-1 (]: Began running node test.ecom.not_null_stg_customers_email.d7cf761533
+[0m16:05:16.449241 [debug] [Thread-3 (]: Finished running node test.ecom.unique_stg_sellers_seller_id.cb2e34d4b8
+[0m16:05:16.449775 [debug] [Thread-4 (]: Failed to rollback 'test.ecom.accepted_values_stg_customers_customer_tier__bronze__silver__gold.414fa1ad40'
+[0m16:05:16.449971 [info ] [Thread-2 (]: 13 of 36 START test not_null_stg_customers_customer_id ......................... [RUN]
+[0m16:05:16.450170 [info ] [Thread-1 (]: 14 of 36 START test not_null_stg_customers_email ............................... [RUN]
+[0m16:05:16.450399 [debug] [Thread-3 (]: Began running node test.ecom.not_null_stg_customers_signup_date.ef12d9c335
+[0m16:05:16.450600 [debug] [Thread-4 (]: On test.ecom.accepted_values_stg_customers_customer_tier__bronze__silver__gold.414fa1ad40: Close
+[0m16:05:16.450803 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.ecom.not_null_stg_sellers_seller_id.35d0bce315, now test.ecom.not_null_stg_customers_customer_id.e2cfb1f9aa)
+[0m16:05:16.451000 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.ecom.not_null_stg_sellers_rating.973b52995f, now test.ecom.not_null_stg_customers_email.d7cf761533)
+[0m16:05:16.451181 [info ] [Thread-3 (]: 15 of 36 START test not_null_stg_customers_signup_date ......................... [RUN]
+[0m16:05:16.451434 [debug] [Thread-2 (]: Began compiling node test.ecom.not_null_stg_customers_customer_id.e2cfb1f9aa
+[0m16:05:16.451706 [info ] [Thread-4 (]: 12 of 36 PASS accepted_values_stg_customers_customer_tier__bronze__silver__gold  [[32mPASS[0m in 0.03s]
+[0m16:05:16.451919 [debug] [Thread-1 (]: Began compiling node test.ecom.not_null_stg_customers_email.d7cf761533
+[0m16:05:16.452113 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.ecom.unique_stg_sellers_seller_id.cb2e34d4b8, now test.ecom.not_null_stg_customers_signup_date.ef12d9c335)
+[0m16:05:16.455435 [debug] [Thread-2 (]: Writing injected SQL for node "test.ecom.not_null_stg_customers_customer_id.e2cfb1f9aa"
+[0m16:05:16.455720 [debug] [Thread-4 (]: Finished running node test.ecom.accepted_values_stg_customers_customer_tier__bronze__silver__gold.414fa1ad40
+[0m16:05:16.457857 [debug] [Thread-1 (]: Writing injected SQL for node "test.ecom.not_null_stg_customers_email.d7cf761533"
+[0m16:05:16.458097 [debug] [Thread-3 (]: Began compiling node test.ecom.not_null_stg_customers_signup_date.ef12d9c335
+[0m16:05:16.458555 [debug] [Thread-4 (]: Began running node test.ecom.unique_stg_customers_customer_id.c7614daada
+[0m16:05:16.461279 [debug] [Thread-3 (]: Writing injected SQL for node "test.ecom.not_null_stg_customers_signup_date.ef12d9c335"
+[0m16:05:16.461559 [info ] [Thread-4 (]: 16 of 36 START test unique_stg_customers_customer_id ........................... [RUN]
+[0m16:05:16.461781 [debug] [Thread-1 (]: Began executing node test.ecom.not_null_stg_customers_email.d7cf761533
+[0m16:05:16.462072 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.ecom.accepted_values_stg_customers_customer_tier__bronze__silver__gold.414fa1ad40, now test.ecom.unique_stg_customers_customer_id.c7614daada)
+[0m16:05:16.463357 [debug] [Thread-1 (]: Writing runtime sql for node "test.ecom.not_null_stg_customers_email.d7cf761533"
+[0m16:05:16.463546 [debug] [Thread-2 (]: Began executing node test.ecom.not_null_stg_customers_customer_id.e2cfb1f9aa
+[0m16:05:16.463741 [debug] [Thread-4 (]: Began compiling node test.ecom.unique_stg_customers_customer_id.c7614daada
+[0m16:05:16.465456 [debug] [Thread-2 (]: Writing runtime sql for node "test.ecom.not_null_stg_customers_customer_id.e2cfb1f9aa"
+[0m16:05:16.465705 [debug] [Thread-3 (]: Began executing node test.ecom.not_null_stg_customers_signup_date.ef12d9c335
+[0m16:05:16.468176 [debug] [Thread-4 (]: Writing injected SQL for node "test.ecom.unique_stg_customers_customer_id.c7614daada"
+[0m16:05:16.469642 [debug] [Thread-3 (]: Writing runtime sql for node "test.ecom.not_null_stg_customers_signup_date.ef12d9c335"
+[0m16:05:16.469911 [debug] [Thread-1 (]: Using duckdb connection "test.ecom.not_null_stg_customers_email.d7cf761533"
+[0m16:05:16.470217 [debug] [Thread-2 (]: Using duckdb connection "test.ecom.not_null_stg_customers_customer_id.e2cfb1f9aa"
+[0m16:05:16.470447 [debug] [Thread-1 (]: On test.ecom.not_null_stg_customers_email.d7cf761533: BEGIN
+[0m16:05:16.470637 [debug] [Thread-2 (]: On test.ecom.not_null_stg_customers_customer_id.e2cfb1f9aa: BEGIN
+[0m16:05:16.470832 [debug] [Thread-4 (]: Began executing node test.ecom.unique_stg_customers_customer_id.c7614daada
+[0m16:05:16.471005 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:05:16.471200 [debug] [Thread-3 (]: Using duckdb connection "test.ecom.not_null_stg_customers_signup_date.ef12d9c335"
+[0m16:05:16.471362 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m16:05:16.472544 [debug] [Thread-4 (]: Writing runtime sql for node "test.ecom.unique_stg_customers_customer_id.c7614daada"
+[0m16:05:16.472832 [debug] [Thread-3 (]: On test.ecom.not_null_stg_customers_signup_date.ef12d9c335: BEGIN
+[0m16:05:16.473053 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m16:05:16.473250 [debug] [Thread-2 (]: SQL status: OK in 0.002 seconds
+[0m16:05:16.473439 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m16:05:16.473654 [debug] [Thread-1 (]: Using duckdb connection "test.ecom.not_null_stg_customers_email.d7cf761533"
+[0m16:05:16.473845 [debug] [Thread-2 (]: Using duckdb connection "test.ecom.not_null_stg_customers_customer_id.e2cfb1f9aa"
+[0m16:05:16.474028 [debug] [Thread-4 (]: Using duckdb connection "test.ecom.unique_stg_customers_customer_id.c7614daada"
+[0m16:05:16.474251 [debug] [Thread-1 (]: On test.ecom.not_null_stg_customers_email.d7cf761533: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.not_null_stg_customers_email.d7cf761533"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select email
+from "ecom"."main_staging"."stg_customers"
+where email is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.474451 [debug] [Thread-2 (]: On test.ecom.not_null_stg_customers_customer_id.e2cfb1f9aa: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.not_null_stg_customers_customer_id.e2cfb1f9aa"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select customer_id
+from "ecom"."main_staging"."stg_customers"
+where customer_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.474640 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.474799 [debug] [Thread-4 (]: On test.ecom.unique_stg_customers_customer_id.c7614daada: BEGIN
+[0m16:05:16.475094 [debug] [Thread-3 (]: Using duckdb connection "test.ecom.not_null_stg_customers_signup_date.ef12d9c335"
+[0m16:05:16.475280 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m16:05:16.475473 [debug] [Thread-3 (]: On test.ecom.not_null_stg_customers_signup_date.ef12d9c335: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.not_null_stg_customers_signup_date.ef12d9c335"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select signup_date
+from "ecom"."main_staging"."stg_customers"
+where signup_date is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.475825 [debug] [Thread-4 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.476002 [debug] [Thread-4 (]: Using duckdb connection "test.ecom.unique_stg_customers_customer_id.c7614daada"
+[0m16:05:16.476184 [debug] [Thread-2 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.476386 [debug] [Thread-4 (]: On test.ecom.unique_stg_customers_customer_id.c7614daada: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.unique_stg_customers_customer_id.c7614daada"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    customer_id as unique_field,
+    count(*) as n_records
+
+from "ecom"."main_staging"."stg_customers"
+where customer_id is not null
+group by customer_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.476596 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m16:05:16.477621 [debug] [Thread-2 (]: On test.ecom.not_null_stg_customers_customer_id.e2cfb1f9aa: ROLLBACK
+[0m16:05:16.477874 [debug] [Thread-3 (]: SQL status: OK in 0.002 seconds
+[0m16:05:16.478436 [debug] [Thread-2 (]: Failed to rollback 'test.ecom.not_null_stg_customers_customer_id.e2cfb1f9aa'
+[0m16:05:16.478656 [debug] [Thread-2 (]: On test.ecom.not_null_stg_customers_customer_id.e2cfb1f9aa: Close
+[0m16:05:16.479370 [debug] [Thread-3 (]: On test.ecom.not_null_stg_customers_signup_date.ef12d9c335: ROLLBACK
+[0m16:05:16.480131 [debug] [Thread-1 (]: On test.ecom.not_null_stg_customers_email.d7cf761533: ROLLBACK
+[0m16:05:16.480357 [debug] [Thread-4 (]: SQL status: OK in 0.003 seconds
+[0m16:05:16.480654 [info ] [Thread-2 (]: 13 of 36 PASS not_null_stg_customers_customer_id ............................... [[32mPASS[0m in 0.03s]
+[0m16:05:16.481173 [debug] [Thread-3 (]: Failed to rollback 'test.ecom.not_null_stg_customers_signup_date.ef12d9c335'
+[0m16:05:16.481607 [debug] [Thread-1 (]: Failed to rollback 'test.ecom.not_null_stg_customers_email.d7cf761533'
+[0m16:05:16.481898 [debug] [Thread-2 (]: Finished running node test.ecom.not_null_stg_customers_customer_id.e2cfb1f9aa
+[0m16:05:16.482602 [debug] [Thread-4 (]: On test.ecom.unique_stg_customers_customer_id.c7614daada: ROLLBACK
+[0m16:05:16.482772 [debug] [Thread-3 (]: On test.ecom.not_null_stg_customers_signup_date.ef12d9c335: Close
+[0m16:05:16.482955 [debug] [Thread-1 (]: On test.ecom.not_null_stg_customers_email.d7cf761533: Close
+[0m16:05:16.483203 [debug] [Thread-2 (]: Began running node test.ecom.unique_stg_customers_email.1ebcb2333e
+[0m16:05:16.483758 [debug] [Thread-4 (]: Failed to rollback 'test.ecom.unique_stg_customers_customer_id.c7614daada'
+[0m16:05:16.484113 [info ] [Thread-3 (]: 15 of 36 PASS not_null_stg_customers_signup_date ............................... [[32mPASS[0m in 0.03s]
+[0m16:05:16.484375 [info ] [Thread-1 (]: 14 of 36 PASS not_null_stg_customers_email ..................................... [[32mPASS[0m in 0.03s]
+[0m16:05:16.484806 [debug] [Thread-4 (]: On test.ecom.unique_stg_customers_customer_id.c7614daada: Close
+[0m16:05:16.484526 [info ] [Thread-2 (]: 17 of 36 START test unique_stg_customers_email ................................. [RUN]
+[0m16:05:16.485124 [debug] [Thread-3 (]: Finished running node test.ecom.not_null_stg_customers_signup_date.ef12d9c335
+[0m16:05:16.485389 [debug] [Thread-1 (]: Finished running node test.ecom.not_null_stg_customers_email.d7cf761533
+[0m16:05:16.485844 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.ecom.not_null_stg_customers_customer_id.e2cfb1f9aa, now test.ecom.unique_stg_customers_email.1ebcb2333e)
+[0m16:05:16.485666 [info ] [Thread-4 (]: 16 of 36 PASS unique_stg_customers_customer_id ................................. [[32mPASS[0m in 0.02s]
+[0m16:05:16.486128 [debug] [Thread-3 (]: Began running node test.ecom.not_null_stg_products_product_id.6373b0acf3
+[0m16:05:16.486316 [debug] [Thread-1 (]: Began running node test.ecom.not_null_stg_products_seller_id.0ba77d68d6
+[0m16:05:16.486512 [debug] [Thread-2 (]: Began compiling node test.ecom.unique_stg_customers_email.1ebcb2333e
+[0m16:05:16.486744 [debug] [Thread-4 (]: Finished running node test.ecom.unique_stg_customers_customer_id.c7614daada
+[0m16:05:16.486917 [info ] [Thread-3 (]: 18 of 36 START test not_null_stg_products_product_id ........................... [RUN]
+[0m16:05:16.487095 [info ] [Thread-1 (]: 19 of 36 START test not_null_stg_products_seller_id ............................ [RUN]
+[0m16:05:16.489329 [debug] [Thread-2 (]: Writing injected SQL for node "test.ecom.unique_stg_customers_email.1ebcb2333e"
+[0m16:05:16.489552 [debug] [Thread-4 (]: Began running node test.ecom.relationships_stg_products_seller_id__seller_id__ref_stg_sellers_.b133815360
+[0m16:05:16.489784 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.ecom.not_null_stg_customers_signup_date.ef12d9c335, now test.ecom.not_null_stg_products_product_id.6373b0acf3)
+[0m16:05:16.489966 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.ecom.not_null_stg_customers_email.d7cf761533, now test.ecom.not_null_stg_products_seller_id.0ba77d68d6)
+[0m16:05:16.490199 [info ] [Thread-4 (]: 20 of 36 START test relationships_stg_products_seller_id__seller_id__ref_stg_sellers_  [RUN]
+[0m16:05:16.490412 [debug] [Thread-3 (]: Began compiling node test.ecom.not_null_stg_products_product_id.6373b0acf3
+[0m16:05:16.490595 [debug] [Thread-1 (]: Began compiling node test.ecom.not_null_stg_products_seller_id.0ba77d68d6
+[0m16:05:16.490804 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.ecom.unique_stg_customers_customer_id.c7614daada, now test.ecom.relationships_stg_products_seller_id__seller_id__ref_stg_sellers_.b133815360)
+[0m16:05:16.492766 [debug] [Thread-3 (]: Writing injected SQL for node "test.ecom.not_null_stg_products_product_id.6373b0acf3"
+[0m16:05:16.494835 [debug] [Thread-1 (]: Writing injected SQL for node "test.ecom.not_null_stg_products_seller_id.0ba77d68d6"
+[0m16:05:16.495048 [debug] [Thread-4 (]: Began compiling node test.ecom.relationships_stg_products_seller_id__seller_id__ref_stg_sellers_.b133815360
+[0m16:05:16.495234 [debug] [Thread-2 (]: Began executing node test.ecom.unique_stg_customers_email.1ebcb2333e
+[0m16:05:16.498954 [debug] [Thread-4 (]: Writing injected SQL for node "test.ecom.relationships_stg_products_seller_id__seller_id__ref_stg_sellers_.b133815360"
+[0m16:05:16.500450 [debug] [Thread-2 (]: Writing runtime sql for node "test.ecom.unique_stg_customers_email.1ebcb2333e"
+[0m16:05:16.500813 [debug] [Thread-1 (]: Began executing node test.ecom.not_null_stg_products_seller_id.0ba77d68d6
+[0m16:05:16.503173 [debug] [Thread-1 (]: Writing runtime sql for node "test.ecom.not_null_stg_products_seller_id.0ba77d68d6"
+[0m16:05:16.503523 [debug] [Thread-3 (]: Began executing node test.ecom.not_null_stg_products_product_id.6373b0acf3
+[0m16:05:16.504793 [debug] [Thread-3 (]: Writing runtime sql for node "test.ecom.not_null_stg_products_product_id.6373b0acf3"
+[0m16:05:16.505091 [debug] [Thread-2 (]: Using duckdb connection "test.ecom.unique_stg_customers_email.1ebcb2333e"
+[0m16:05:16.505302 [debug] [Thread-2 (]: On test.ecom.unique_stg_customers_email.1ebcb2333e: BEGIN
+[0m16:05:16.505525 [debug] [Thread-1 (]: Using duckdb connection "test.ecom.not_null_stg_products_seller_id.0ba77d68d6"
+[0m16:05:16.505725 [debug] [Thread-4 (]: Began executing node test.ecom.relationships_stg_products_seller_id__seller_id__ref_stg_sellers_.b133815360
+[0m16:05:16.505892 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m16:05:16.506089 [debug] [Thread-3 (]: Using duckdb connection "test.ecom.not_null_stg_products_product_id.6373b0acf3"
+[0m16:05:16.506253 [debug] [Thread-1 (]: On test.ecom.not_null_stg_products_seller_id.0ba77d68d6: BEGIN
+[0m16:05:16.507451 [debug] [Thread-4 (]: Writing runtime sql for node "test.ecom.relationships_stg_products_seller_id__seller_id__ref_stg_sellers_.b133815360"
+[0m16:05:16.507741 [debug] [Thread-3 (]: On test.ecom.not_null_stg_products_product_id.6373b0acf3: BEGIN
+[0m16:05:16.507926 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:05:16.508105 [debug] [Thread-2 (]: SQL status: OK in 0.002 seconds
+[0m16:05:16.508299 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m16:05:16.508559 [debug] [Thread-4 (]: Using duckdb connection "test.ecom.relationships_stg_products_seller_id__seller_id__ref_stg_sellers_.b133815360"
+[0m16:05:16.508726 [debug] [Thread-2 (]: Using duckdb connection "test.ecom.unique_stg_customers_email.1ebcb2333e"
+[0m16:05:16.508908 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.509113 [debug] [Thread-4 (]: On test.ecom.relationships_stg_products_seller_id__seller_id__ref_stg_sellers_.b133815360: BEGIN
+[0m16:05:16.509297 [debug] [Thread-2 (]: On test.ecom.unique_stg_customers_email.1ebcb2333e: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.unique_stg_customers_email.1ebcb2333e"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    email as unique_field,
+    count(*) as n_records
+
+from "ecom"."main_staging"."stg_customers"
+where email is not null
+group by email
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.509470 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.509639 [debug] [Thread-1 (]: Using duckdb connection "test.ecom.not_null_stg_products_seller_id.0ba77d68d6"
+[0m16:05:16.509800 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m16:05:16.510036 [debug] [Thread-3 (]: Using duckdb connection "test.ecom.not_null_stg_products_product_id.6373b0acf3"
+[0m16:05:16.510233 [debug] [Thread-1 (]: On test.ecom.not_null_stg_products_seller_id.0ba77d68d6: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.not_null_stg_products_seller_id.0ba77d68d6"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select seller_id
+from "ecom"."main_staging"."stg_products"
+where seller_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.510506 [debug] [Thread-3 (]: On test.ecom.not_null_stg_products_product_id.6373b0acf3: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.not_null_stg_products_product_id.6373b0acf3"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select product_id
+from "ecom"."main_staging"."stg_products"
+where product_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.510767 [debug] [Thread-4 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.511134 [debug] [Thread-4 (]: Using duckdb connection "test.ecom.relationships_stg_products_seller_id__seller_id__ref_stg_sellers_.b133815360"
+[0m16:05:16.511557 [debug] [Thread-4 (]: On test.ecom.relationships_stg_products_seller_id__seller_id__ref_stg_sellers_.b133815360: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.relationships_stg_products_seller_id__seller_id__ref_stg_sellers_.b133815360"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select seller_id as from_field
+    from "ecom"."main_staging"."stg_products"
+    where seller_id is not null
+),
+
+parent as (
+    select seller_id as to_field
+    from "ecom"."main_staging"."stg_sellers"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.511947 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.512214 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m16:05:16.513111 [debug] [Thread-1 (]: On test.ecom.not_null_stg_products_seller_id.0ba77d68d6: ROLLBACK
+[0m16:05:16.513842 [debug] [Thread-3 (]: On test.ecom.not_null_stg_products_product_id.6373b0acf3: ROLLBACK
+[0m16:05:16.514082 [debug] [Thread-2 (]: SQL status: OK in 0.004 seconds
+[0m16:05:16.514564 [debug] [Thread-1 (]: Failed to rollback 'test.ecom.not_null_stg_products_seller_id.0ba77d68d6'
+[0m16:05:16.514779 [debug] [Thread-4 (]: SQL status: OK in 0.003 seconds
+[0m16:05:16.515245 [debug] [Thread-3 (]: Failed to rollback 'test.ecom.not_null_stg_products_product_id.6373b0acf3'
+[0m16:05:16.515474 [debug] [Thread-1 (]: On test.ecom.not_null_stg_products_seller_id.0ba77d68d6: Close
+[0m16:05:16.516152 [debug] [Thread-2 (]: On test.ecom.unique_stg_customers_email.1ebcb2333e: ROLLBACK
+[0m16:05:16.516375 [debug] [Thread-3 (]: On test.ecom.not_null_stg_products_product_id.6373b0acf3: Close
+[0m16:05:16.517117 [debug] [Thread-4 (]: On test.ecom.relationships_stg_products_seller_id__seller_id__ref_stg_sellers_.b133815360: ROLLBACK
+[0m16:05:16.517463 [info ] [Thread-1 (]: 19 of 36 PASS not_null_stg_products_seller_id .................................. [[32mPASS[0m in 0.03s]
+[0m16:05:16.517979 [debug] [Thread-2 (]: Failed to rollback 'test.ecom.unique_stg_customers_email.1ebcb2333e'
+[0m16:05:16.518228 [info ] [Thread-3 (]: 18 of 36 PASS not_null_stg_products_product_id ................................. [[32mPASS[0m in 0.03s]
+[0m16:05:16.518720 [debug] [Thread-4 (]: Failed to rollback 'test.ecom.relationships_stg_products_seller_id__seller_id__ref_stg_sellers_.b133815360'
+[0m16:05:16.518968 [debug] [Thread-1 (]: Finished running node test.ecom.not_null_stg_products_seller_id.0ba77d68d6
+[0m16:05:16.519149 [debug] [Thread-2 (]: On test.ecom.unique_stg_customers_email.1ebcb2333e: Close
+[0m16:05:16.519380 [debug] [Thread-3 (]: Finished running node test.ecom.not_null_stg_products_product_id.6373b0acf3
+[0m16:05:16.519544 [debug] [Thread-4 (]: On test.ecom.relationships_stg_products_seller_id__seller_id__ref_stg_sellers_.b133815360: Close
+[0m16:05:16.519733 [debug] [Thread-1 (]: Began running node test.ecom.unique_stg_products_product_id.7d950a1467
+[0m16:05:16.520040 [info ] [Thread-2 (]: 17 of 36 PASS unique_stg_customers_email ....................................... [[32mPASS[0m in 0.03s]
+[0m16:05:16.520300 [info ] [Thread-4 (]: 20 of 36 PASS relationships_stg_products_seller_id__seller_id__ref_stg_sellers_  [[32mPASS[0m in 0.03s]
+[0m16:05:16.520508 [info ] [Thread-1 (]: 21 of 36 START test unique_stg_products_product_id ............................. [RUN]
+[0m16:05:16.520766 [debug] [Thread-2 (]: Finished running node test.ecom.unique_stg_customers_email.1ebcb2333e
+[0m16:05:16.520999 [debug] [Thread-4 (]: Finished running node test.ecom.relationships_stg_products_seller_id__seller_id__ref_stg_sellers_.b133815360
+[0m16:05:16.521181 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.ecom.not_null_stg_products_seller_id.0ba77d68d6, now test.ecom.unique_stg_products_product_id.7d950a1467)
+[0m16:05:16.521454 [debug] [Thread-3 (]: Began running node model.ecom.stg_orders
+[0m16:05:16.521656 [debug] [Thread-1 (]: Began compiling node test.ecom.unique_stg_products_product_id.7d950a1467
+[0m16:05:16.524192 [debug] [Thread-1 (]: Writing injected SQL for node "test.ecom.unique_stg_products_product_id.7d950a1467"
+[0m16:05:16.521901 [info ] [Thread-3 (]: 22 of 36 START sql view model main_staging.stg_orders .......................... [RUN]
+[0m16:05:16.524514 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.ecom.not_null_stg_products_product_id.6373b0acf3, now model.ecom.stg_orders)
+[0m16:05:16.524697 [debug] [Thread-3 (]: Began compiling node model.ecom.stg_orders
+[0m16:05:16.526332 [debug] [Thread-3 (]: Writing injected SQL for node "model.ecom.stg_orders"
+[0m16:05:16.526581 [debug] [Thread-1 (]: Began executing node test.ecom.unique_stg_products_product_id.7d950a1467
+[0m16:05:16.527913 [debug] [Thread-1 (]: Writing runtime sql for node "test.ecom.unique_stg_products_product_id.7d950a1467"
+[0m16:05:16.528160 [debug] [Thread-3 (]: Began executing node model.ecom.stg_orders
+[0m16:05:16.529798 [debug] [Thread-3 (]: Writing runtime sql for node "model.ecom.stg_orders"
+[0m16:05:16.530090 [debug] [Thread-1 (]: Using duckdb connection "test.ecom.unique_stg_products_product_id.7d950a1467"
+[0m16:05:16.530275 [debug] [Thread-1 (]: On test.ecom.unique_stg_products_product_id.7d950a1467: BEGIN
+[0m16:05:16.530503 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:05:16.530786 [debug] [Thread-3 (]: Using duckdb connection "model.ecom.stg_orders"
+[0m16:05:16.530976 [debug] [Thread-3 (]: On model.ecom.stg_orders: BEGIN
+[0m16:05:16.531148 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.531301 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m16:05:16.531465 [debug] [Thread-1 (]: Using duckdb connection "test.ecom.unique_stg_products_product_id.7d950a1467"
+[0m16:05:16.531685 [debug] [Thread-1 (]: On test.ecom.unique_stg_products_product_id.7d950a1467: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.unique_stg_products_product_id.7d950a1467"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    product_id as unique_field,
+    count(*) as n_records
+
+from "ecom"."main_staging"."stg_products"
+where product_id is not null
+group by product_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.531936 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.532093 [debug] [Thread-3 (]: Using duckdb connection "model.ecom.stg_orders"
+[0m16:05:16.532296 [debug] [Thread-3 (]: On model.ecom.stg_orders: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "model.ecom.stg_orders"} */
+
+  
+  create view "ecom"."main_staging"."stg_orders__dbt_tmp" as (
+    /*
+  stg_orders
+  ----------
+  - Key challenge: order_date arrives in two formats (ISO and dd/mm/yyyy).
+    We COALESCE two TRY_STRPTIME calls to handle both safely.
+  - Filters rows where the date cannot be parsed (data quality guard)
+  - Filters orphaned orders (customer_id not in stg_customers)
+  - Casts and standardises order_status and payment_method
+*/
+
+with source as (
+    select * from "ecom"."raw"."orders"
+),
+
+date_parsed as (
+    select
+        order_id,
+        customer_id,
+        -- Try ISO first, then dd/mm/yyyy — whichever parses wins
+        coalesce(
+            try_strptime(order_date, '%Y-%m-%d'),
+            try_strptime(order_date, '%d/%m/%Y')
+        )                                       as order_date,
+        order_status,
+        payment_method,
+        shipping_city,
+        cast(discount_amount as decimal(10,2))  as discount_amount,
+        nullif(trim(coupon_code), '')           as coupon_code,
+        lower(platform)                         as platform
+    from source
+),
+
+valid_customers as (
+    select customer_id from "ecom"."main_staging"."stg_customers"
+),
+
+final as (
+    select
+        o.order_id,
+        o.customer_id,
+        o.order_date,
+        o.order_status,
+        o.payment_method,
+        o.shipping_city,
+        o.discount_amount,
+        o.coupon_code,
+        o.platform
+    from date_parsed o
+    -- Drop unparseable dates
+    where o.order_date is not null
+    -- Drop orphaned customer_ids (referential integrity fix)
+    and o.customer_id in (select customer_id from valid_customers)
+)
+
+select * from final
+  );
+
+[0m16:05:16.533017 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.533974 [debug] [Thread-1 (]: On test.ecom.unique_stg_products_product_id.7d950a1467: ROLLBACK
+[0m16:05:16.534253 [debug] [Thread-3 (]: SQL status: OK in 0.002 seconds
+[0m16:05:16.534743 [debug] [Thread-1 (]: Failed to rollback 'test.ecom.unique_stg_products_product_id.7d950a1467'
+[0m16:05:16.536381 [debug] [Thread-3 (]: Using duckdb connection "model.ecom.stg_orders"
+[0m16:05:16.536576 [debug] [Thread-1 (]: On test.ecom.unique_stg_products_product_id.7d950a1467: Close
+[0m16:05:16.536776 [debug] [Thread-3 (]: On model.ecom.stg_orders: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "model.ecom.stg_orders"} */
+alter view "ecom"."main_staging"."stg_orders__dbt_tmp" rename to "stg_orders"
+[0m16:05:16.537111 [info ] [Thread-1 (]: 21 of 36 PASS unique_stg_products_product_id ................................... [[32mPASS[0m in 0.02s]
+[0m16:05:16.537458 [debug] [Thread-1 (]: Finished running node test.ecom.unique_stg_products_product_id.7d950a1467
+[0m16:05:16.537655 [debug] [Thread-3 (]: SQL status: OK in 0.000 seconds
+[0m16:05:16.538416 [debug] [Thread-3 (]: On model.ecom.stg_orders: COMMIT
+[0m16:05:16.538594 [debug] [Thread-3 (]: Using duckdb connection "model.ecom.stg_orders"
+[0m16:05:16.538752 [debug] [Thread-3 (]: On model.ecom.stg_orders: COMMIT
+[0m16:05:16.539172 [debug] [Thread-3 (]: SQL status: OK in 0.000 seconds
+[0m16:05:16.541384 [debug] [Thread-3 (]: Using duckdb connection "model.ecom.stg_orders"
+[0m16:05:16.541567 [debug] [Thread-3 (]: On model.ecom.stg_orders: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "model.ecom.stg_orders"} */
+
+      drop view if exists "ecom"."main_staging"."stg_orders__dbt_backup" cascade
+    
+[0m16:05:16.541837 [debug] [Thread-3 (]: SQL status: OK in 0.000 seconds
+[0m16:05:16.542459 [debug] [Thread-3 (]: On model.ecom.stg_orders: Close
+[0m16:05:16.542727 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'c1e051fe-2da2-4723-894a-d9f18a60ef10', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11b729610>]}
+[0m16:05:16.543016 [info ] [Thread-3 (]: 22 of 36 OK created sql view model main_staging.stg_orders ..................... [[32mOK[0m in 0.02s]
+[0m16:05:16.543273 [debug] [Thread-3 (]: Finished running node model.ecom.stg_orders
+[0m16:05:16.543671 [debug] [Thread-2 (]: Began running node test.ecom.accepted_values_stg_orders_order_status__pending__processing__shipped__delivered__cancelled__returned.66d44b6ae9
+[0m16:05:16.543892 [debug] [Thread-4 (]: Began running node test.ecom.accepted_values_stg_orders_payment_method__credit_card__debit_card__bank_transfer__cash_on_delivery__wallet.c6b0756aa2
+[0m16:05:16.544107 [debug] [Thread-1 (]: Began running node test.ecom.not_null_stg_orders_customer_id.af79d5e4b5
+[0m16:05:16.544435 [debug] [Thread-3 (]: Began running node test.ecom.not_null_stg_orders_order_date.2177a3e8bb
+[0m16:05:16.544299 [info ] [Thread-2 (]: 23 of 36 START test accepted_values_stg_orders_order_status__pending__processing__shipped__delivered__cancelled__returned  [RUN]
+[0m16:05:16.544666 [info ] [Thread-4 (]: 24 of 36 START test accepted_values_stg_orders_payment_method__credit_card__debit_card__bank_transfer__cash_on_delivery__wallet  [RUN]
+[0m16:05:16.544861 [info ] [Thread-1 (]: 25 of 36 START test not_null_stg_orders_customer_id ............................ [RUN]
+[0m16:05:16.545047 [info ] [Thread-3 (]: 26 of 36 START test not_null_stg_orders_order_date ............................. [RUN]
+[0m16:05:16.545276 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.ecom.unique_stg_customers_email.1ebcb2333e, now test.ecom.accepted_values_stg_orders_order_status__pending__processing__shipped__delivered__cancelled__returned.66d44b6ae9)
+[0m16:05:16.545476 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.ecom.relationships_stg_products_seller_id__seller_id__ref_stg_sellers_.b133815360, now test.ecom.accepted_values_stg_orders_payment_method__credit_card__debit_card__bank_transfer__cash_on_delivery__wallet.c6b0756aa2)
+[0m16:05:16.545661 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.ecom.unique_stg_products_product_id.7d950a1467, now test.ecom.not_null_stg_orders_customer_id.af79d5e4b5)
+[0m16:05:16.545830 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.ecom.stg_orders, now test.ecom.not_null_stg_orders_order_date.2177a3e8bb)
+[0m16:05:16.545999 [debug] [Thread-2 (]: Began compiling node test.ecom.accepted_values_stg_orders_order_status__pending__processing__shipped__delivered__cancelled__returned.66d44b6ae9
+[0m16:05:16.546168 [debug] [Thread-4 (]: Began compiling node test.ecom.accepted_values_stg_orders_payment_method__credit_card__debit_card__bank_transfer__cash_on_delivery__wallet.c6b0756aa2
+[0m16:05:16.546328 [debug] [Thread-1 (]: Began compiling node test.ecom.not_null_stg_orders_customer_id.af79d5e4b5
+[0m16:05:16.546482 [debug] [Thread-3 (]: Began compiling node test.ecom.not_null_stg_orders_order_date.2177a3e8bb
+[0m16:05:16.548719 [debug] [Thread-2 (]: Writing injected SQL for node "test.ecom.accepted_values_stg_orders_order_status__pending__processing__shipped__delivered__cancelled__returned.66d44b6ae9"
+[0m16:05:16.551137 [debug] [Thread-4 (]: Writing injected SQL for node "test.ecom.accepted_values_stg_orders_payment_method__credit_card__debit_card__bank_transfer__cash_on_delivery__wallet.c6b0756aa2"
+[0m16:05:16.553290 [debug] [Thread-1 (]: Writing injected SQL for node "test.ecom.not_null_stg_orders_customer_id.af79d5e4b5"
+[0m16:05:16.555154 [debug] [Thread-3 (]: Writing injected SQL for node "test.ecom.not_null_stg_orders_order_date.2177a3e8bb"
+[0m16:05:16.555702 [debug] [Thread-3 (]: Began executing node test.ecom.not_null_stg_orders_order_date.2177a3e8bb
+[0m16:05:16.556965 [debug] [Thread-3 (]: Writing runtime sql for node "test.ecom.not_null_stg_orders_order_date.2177a3e8bb"
+[0m16:05:16.557205 [debug] [Thread-4 (]: Began executing node test.ecom.accepted_values_stg_orders_payment_method__credit_card__debit_card__bank_transfer__cash_on_delivery__wallet.c6b0756aa2
+[0m16:05:16.558658 [debug] [Thread-4 (]: Writing runtime sql for node "test.ecom.accepted_values_stg_orders_payment_method__credit_card__debit_card__bank_transfer__cash_on_delivery__wallet.c6b0756aa2"
+[0m16:05:16.558885 [debug] [Thread-2 (]: Began executing node test.ecom.accepted_values_stg_orders_order_status__pending__processing__shipped__delivered__cancelled__returned.66d44b6ae9
+[0m16:05:16.560398 [debug] [Thread-2 (]: Writing runtime sql for node "test.ecom.accepted_values_stg_orders_order_status__pending__processing__shipped__delivered__cancelled__returned.66d44b6ae9"
+[0m16:05:16.560674 [debug] [Thread-1 (]: Began executing node test.ecom.not_null_stg_orders_customer_id.af79d5e4b5
+[0m16:05:16.561874 [debug] [Thread-1 (]: Writing runtime sql for node "test.ecom.not_null_stg_orders_customer_id.af79d5e4b5"
+[0m16:05:16.562236 [debug] [Thread-2 (]: Using duckdb connection "test.ecom.accepted_values_stg_orders_order_status__pending__processing__shipped__delivered__cancelled__returned.66d44b6ae9"
+[0m16:05:16.562455 [debug] [Thread-4 (]: Using duckdb connection "test.ecom.accepted_values_stg_orders_payment_method__credit_card__debit_card__bank_transfer__cash_on_delivery__wallet.c6b0756aa2"
+[0m16:05:16.562655 [debug] [Thread-3 (]: Using duckdb connection "test.ecom.not_null_stg_orders_order_date.2177a3e8bb"
+[0m16:05:16.562838 [debug] [Thread-2 (]: On test.ecom.accepted_values_stg_orders_order_status__pending__processing__shipped__delivered__cancelled__returned.66d44b6ae9: BEGIN
+[0m16:05:16.563029 [debug] [Thread-4 (]: On test.ecom.accepted_values_stg_orders_payment_method__credit_card__debit_card__bank_transfer__cash_on_delivery__wallet.c6b0756aa2: BEGIN
+[0m16:05:16.563226 [debug] [Thread-1 (]: Using duckdb connection "test.ecom.not_null_stg_orders_customer_id.af79d5e4b5"
+[0m16:05:16.563416 [debug] [Thread-3 (]: On test.ecom.not_null_stg_orders_order_date.2177a3e8bb: BEGIN
+[0m16:05:16.563605 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m16:05:16.563777 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m16:05:16.563936 [debug] [Thread-1 (]: On test.ecom.not_null_stg_orders_customer_id.af79d5e4b5: BEGIN
+[0m16:05:16.564089 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m16:05:16.564412 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:05:16.564640 [debug] [Thread-2 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.564807 [debug] [Thread-4 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.565032 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.565205 [debug] [Thread-2 (]: Using duckdb connection "test.ecom.accepted_values_stg_orders_order_status__pending__processing__shipped__delivered__cancelled__returned.66d44b6ae9"
+[0m16:05:16.565381 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.565542 [debug] [Thread-4 (]: Using duckdb connection "test.ecom.accepted_values_stg_orders_payment_method__credit_card__debit_card__bank_transfer__cash_on_delivery__wallet.c6b0756aa2"
+[0m16:05:16.565706 [debug] [Thread-3 (]: Using duckdb connection "test.ecom.not_null_stg_orders_order_date.2177a3e8bb"
+[0m16:05:16.565891 [debug] [Thread-2 (]: On test.ecom.accepted_values_stg_orders_order_status__pending__processing__shipped__delivered__cancelled__returned.66d44b6ae9: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.accepted_values_stg_orders_order_status__pending__processing__shipped__delivered__cancelled__returned.66d44b6ae9"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        order_status as value_field,
+        count(*) as n_records
+
+    from "ecom"."main_staging"."stg_orders"
+    group by order_status
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'pending','processing','shipped','delivered','cancelled','returned'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.566068 [debug] [Thread-1 (]: Using duckdb connection "test.ecom.not_null_stg_orders_customer_id.af79d5e4b5"
+[0m16:05:16.566251 [debug] [Thread-4 (]: On test.ecom.accepted_values_stg_orders_payment_method__credit_card__debit_card__bank_transfer__cash_on_delivery__wallet.c6b0756aa2: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.accepted_values_stg_orders_payment_method__credit_card__debit_card__bank_transfer__cash_on_delivery__wallet.c6b0756aa2"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        payment_method as value_field,
+        count(*) as n_records
+
+    from "ecom"."main_staging"."stg_orders"
+    group by payment_method
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'credit_card','debit_card','bank_transfer','cash_on_delivery','wallet'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.566461 [debug] [Thread-3 (]: On test.ecom.not_null_stg_orders_order_date.2177a3e8bb: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.not_null_stg_orders_order_date.2177a3e8bb"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select order_date
+from "ecom"."main_staging"."stg_orders"
+where order_date is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.566793 [debug] [Thread-1 (]: On test.ecom.not_null_stg_orders_customer_id.af79d5e4b5: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.not_null_stg_orders_customer_id.af79d5e4b5"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select customer_id
+from "ecom"."main_staging"."stg_orders"
+where customer_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.572073 [debug] [Thread-1 (]: SQL status: OK in 0.005 seconds
+[0m16:05:16.573274 [debug] [Thread-1 (]: On test.ecom.not_null_stg_orders_customer_id.af79d5e4b5: ROLLBACK
+[0m16:05:16.573551 [debug] [Thread-2 (]: SQL status: OK in 0.007 seconds
+[0m16:05:16.573761 [debug] [Thread-4 (]: SQL status: OK in 0.007 seconds
+[0m16:05:16.574243 [debug] [Thread-1 (]: Failed to rollback 'test.ecom.not_null_stg_orders_customer_id.af79d5e4b5'
+[0m16:05:16.574498 [debug] [Thread-3 (]: SQL status: OK in 0.007 seconds
+[0m16:05:16.575243 [debug] [Thread-2 (]: On test.ecom.accepted_values_stg_orders_order_status__pending__processing__shipped__delivered__cancelled__returned.66d44b6ae9: ROLLBACK
+[0m16:05:16.575427 [debug] [Thread-1 (]: On test.ecom.not_null_stg_orders_customer_id.af79d5e4b5: Close
+[0m16:05:16.576106 [debug] [Thread-4 (]: On test.ecom.accepted_values_stg_orders_payment_method__credit_card__debit_card__bank_transfer__cash_on_delivery__wallet.c6b0756aa2: ROLLBACK
+[0m16:05:16.576634 [debug] [Thread-2 (]: Failed to rollback 'test.ecom.accepted_values_stg_orders_order_status__pending__processing__shipped__delivered__cancelled__returned.66d44b6ae9'
+[0m16:05:16.577298 [debug] [Thread-3 (]: On test.ecom.not_null_stg_orders_order_date.2177a3e8bb: ROLLBACK
+[0m16:05:16.577588 [info ] [Thread-1 (]: 25 of 36 PASS not_null_stg_orders_customer_id .................................. [[32mPASS[0m in 0.03s]
+[0m16:05:16.578086 [debug] [Thread-4 (]: Failed to rollback 'test.ecom.accepted_values_stg_orders_payment_method__credit_card__debit_card__bank_transfer__cash_on_delivery__wallet.c6b0756aa2'
+[0m16:05:16.578259 [debug] [Thread-2 (]: On test.ecom.accepted_values_stg_orders_order_status__pending__processing__shipped__delivered__cancelled__returned.66d44b6ae9: Close
+[0m16:05:16.578711 [debug] [Thread-3 (]: Failed to rollback 'test.ecom.not_null_stg_orders_order_date.2177a3e8bb'
+[0m16:05:16.578958 [debug] [Thread-1 (]: Finished running node test.ecom.not_null_stg_orders_customer_id.af79d5e4b5
+[0m16:05:16.579140 [debug] [Thread-4 (]: On test.ecom.accepted_values_stg_orders_payment_method__credit_card__debit_card__bank_transfer__cash_on_delivery__wallet.c6b0756aa2: Close
+[0m16:05:16.579328 [debug] [Thread-3 (]: On test.ecom.not_null_stg_orders_order_date.2177a3e8bb: Close
+[0m16:05:16.579587 [info ] [Thread-2 (]: 23 of 36 PASS accepted_values_stg_orders_order_status__pending__processing__shipped__delivered__cancelled__returned  [[32mPASS[0m in 0.03s]
+[0m16:05:16.579826 [debug] [Thread-1 (]: Began running node test.ecom.not_null_stg_orders_order_id.81cfe2fe64
+[0m16:05:16.580170 [info ] [Thread-4 (]: 24 of 36 PASS accepted_values_stg_orders_payment_method__credit_card__debit_card__bank_transfer__cash_on_delivery__wallet  [[32mPASS[0m in 0.03s]
+[0m16:05:16.580433 [info ] [Thread-3 (]: 26 of 36 PASS not_null_stg_orders_order_date ................................... [[32mPASS[0m in 0.03s]
+[0m16:05:16.580697 [debug] [Thread-2 (]: Finished running node test.ecom.accepted_values_stg_orders_order_status__pending__processing__shipped__delivered__cancelled__returned.66d44b6ae9
+[0m16:05:16.580879 [info ] [Thread-1 (]: 27 of 36 START test not_null_stg_orders_order_id ............................... [RUN]
+[0m16:05:16.581148 [debug] [Thread-4 (]: Finished running node test.ecom.accepted_values_stg_orders_payment_method__credit_card__debit_card__bank_transfer__cash_on_delivery__wallet.c6b0756aa2
+[0m16:05:16.581373 [debug] [Thread-3 (]: Finished running node test.ecom.not_null_stg_orders_order_date.2177a3e8bb
+[0m16:05:16.581560 [debug] [Thread-2 (]: Began running node test.ecom.relationships_stg_orders_customer_id__customer_id__ref_stg_customers_.430bf21500
+[0m16:05:16.581772 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.ecom.not_null_stg_orders_customer_id.af79d5e4b5, now test.ecom.not_null_stg_orders_order_id.81cfe2fe64)
+[0m16:05:16.581959 [debug] [Thread-4 (]: Began running node test.ecom.unique_stg_orders_order_id.e3b841c71a
+[0m16:05:16.582204 [info ] [Thread-2 (]: 28 of 36 START test relationships_stg_orders_customer_id__customer_id__ref_stg_customers_  [RUN]
+[0m16:05:16.582393 [debug] [Thread-1 (]: Began compiling node test.ecom.not_null_stg_orders_order_id.81cfe2fe64
+[0m16:05:16.582719 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.ecom.accepted_values_stg_orders_order_status__pending__processing__shipped__delivered__cancelled__returned.66d44b6ae9, now test.ecom.relationships_stg_orders_customer_id__customer_id__ref_stg_customers_.430bf21500)
+[0m16:05:16.582566 [info ] [Thread-4 (]: 29 of 36 START test unique_stg_orders_order_id ................................. [RUN]
+[0m16:05:16.585482 [debug] [Thread-1 (]: Writing injected SQL for node "test.ecom.not_null_stg_orders_order_id.81cfe2fe64"
+[0m16:05:16.585803 [debug] [Thread-2 (]: Began compiling node test.ecom.relationships_stg_orders_customer_id__customer_id__ref_stg_customers_.430bf21500
+[0m16:05:16.586027 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.ecom.accepted_values_stg_orders_payment_method__credit_card__debit_card__bank_transfer__cash_on_delivery__wallet.c6b0756aa2, now test.ecom.unique_stg_orders_order_id.e3b841c71a)
+[0m16:05:16.588705 [debug] [Thread-2 (]: Writing injected SQL for node "test.ecom.relationships_stg_orders_customer_id__customer_id__ref_stg_customers_.430bf21500"
+[0m16:05:16.588915 [debug] [Thread-4 (]: Began compiling node test.ecom.unique_stg_orders_order_id.e3b841c71a
+[0m16:05:16.592028 [debug] [Thread-4 (]: Writing injected SQL for node "test.ecom.unique_stg_orders_order_id.e3b841c71a"
+[0m16:05:16.592269 [debug] [Thread-1 (]: Began executing node test.ecom.not_null_stg_orders_order_id.81cfe2fe64
+[0m16:05:16.593524 [debug] [Thread-1 (]: Writing runtime sql for node "test.ecom.not_null_stg_orders_order_id.81cfe2fe64"
+[0m16:05:16.593824 [debug] [Thread-2 (]: Began executing node test.ecom.relationships_stg_orders_customer_id__customer_id__ref_stg_customers_.430bf21500
+[0m16:05:16.595061 [debug] [Thread-2 (]: Writing runtime sql for node "test.ecom.relationships_stg_orders_customer_id__customer_id__ref_stg_customers_.430bf21500"
+[0m16:05:16.595271 [debug] [Thread-4 (]: Began executing node test.ecom.unique_stg_orders_order_id.e3b841c71a
+[0m16:05:16.596476 [debug] [Thread-4 (]: Writing runtime sql for node "test.ecom.unique_stg_orders_order_id.e3b841c71a"
+[0m16:05:16.596750 [debug] [Thread-1 (]: Using duckdb connection "test.ecom.not_null_stg_orders_order_id.81cfe2fe64"
+[0m16:05:16.597018 [debug] [Thread-1 (]: On test.ecom.not_null_stg_orders_order_id.81cfe2fe64: BEGIN
+[0m16:05:16.597226 [debug] [Thread-2 (]: Using duckdb connection "test.ecom.relationships_stg_orders_customer_id__customer_id__ref_stg_customers_.430bf21500"
+[0m16:05:16.597416 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:05:16.597603 [debug] [Thread-2 (]: On test.ecom.relationships_stg_orders_customer_id__customer_id__ref_stg_customers_.430bf21500: BEGIN
+[0m16:05:16.597890 [debug] [Thread-4 (]: Using duckdb connection "test.ecom.unique_stg_orders_order_id.e3b841c71a"
+[0m16:05:16.598070 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m16:05:16.598250 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.598405 [debug] [Thread-4 (]: On test.ecom.unique_stg_orders_order_id.e3b841c71a: BEGIN
+[0m16:05:16.598618 [debug] [Thread-1 (]: Using duckdb connection "test.ecom.not_null_stg_orders_order_id.81cfe2fe64"
+[0m16:05:16.598788 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m16:05:16.598953 [debug] [Thread-2 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.599124 [debug] [Thread-1 (]: On test.ecom.not_null_stg_orders_order_id.81cfe2fe64: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.not_null_stg_orders_order_id.81cfe2fe64"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select order_id
+from "ecom"."main_staging"."stg_orders"
+where order_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.599352 [debug] [Thread-2 (]: Using duckdb connection "test.ecom.relationships_stg_orders_customer_id__customer_id__ref_stg_customers_.430bf21500"
+[0m16:05:16.599583 [debug] [Thread-4 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.599796 [debug] [Thread-2 (]: On test.ecom.relationships_stg_orders_customer_id__customer_id__ref_stg_customers_.430bf21500: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.relationships_stg_orders_customer_id__customer_id__ref_stg_customers_.430bf21500"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select customer_id as from_field
+    from "ecom"."main_staging"."stg_orders"
+    where customer_id is not null
+),
+
+parent as (
+    select customer_id as to_field
+    from "ecom"."main_staging"."stg_customers"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.600016 [debug] [Thread-4 (]: Using duckdb connection "test.ecom.unique_stg_orders_order_id.e3b841c71a"
+[0m16:05:16.600354 [debug] [Thread-4 (]: On test.ecom.unique_stg_orders_order_id.e3b841c71a: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.unique_stg_orders_order_id.e3b841c71a"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    order_id as unique_field,
+    count(*) as n_records
+
+from "ecom"."main_staging"."stg_orders"
+where order_id is not null
+group by order_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.603959 [debug] [Thread-1 (]: SQL status: OK in 0.004 seconds
+[0m16:05:16.605129 [debug] [Thread-1 (]: On test.ecom.not_null_stg_orders_order_id.81cfe2fe64: ROLLBACK
+[0m16:05:16.605365 [debug] [Thread-2 (]: SQL status: OK in 0.005 seconds
+[0m16:05:16.605576 [debug] [Thread-4 (]: SQL status: OK in 0.005 seconds
+[0m16:05:16.606136 [debug] [Thread-1 (]: Failed to rollback 'test.ecom.not_null_stg_orders_order_id.81cfe2fe64'
+[0m16:05:16.606362 [debug] [Thread-1 (]: On test.ecom.not_null_stg_orders_order_id.81cfe2fe64: Close
+[0m16:05:16.607064 [debug] [Thread-4 (]: On test.ecom.unique_stg_orders_order_id.e3b841c71a: ROLLBACK
+[0m16:05:16.607709 [debug] [Thread-2 (]: On test.ecom.relationships_stg_orders_customer_id__customer_id__ref_stg_customers_.430bf21500: ROLLBACK
+[0m16:05:16.608028 [info ] [Thread-1 (]: 27 of 36 PASS not_null_stg_orders_order_id ..................................... [[32mPASS[0m in 0.03s]
+[0m16:05:16.608532 [debug] [Thread-4 (]: Failed to rollback 'test.ecom.unique_stg_orders_order_id.e3b841c71a'
+[0m16:05:16.608991 [debug] [Thread-2 (]: Failed to rollback 'test.ecom.relationships_stg_orders_customer_id__customer_id__ref_stg_customers_.430bf21500'
+[0m16:05:16.609246 [debug] [Thread-1 (]: Finished running node test.ecom.not_null_stg_orders_order_id.81cfe2fe64
+[0m16:05:16.609426 [debug] [Thread-4 (]: On test.ecom.unique_stg_orders_order_id.e3b841c71a: Close
+[0m16:05:16.609599 [debug] [Thread-2 (]: On test.ecom.relationships_stg_orders_customer_id__customer_id__ref_stg_customers_.430bf21500: Close
+[0m16:05:16.609927 [info ] [Thread-4 (]: 29 of 36 PASS unique_stg_orders_order_id ....................................... [[32mPASS[0m in 0.02s]
+[0m16:05:16.610403 [debug] [Thread-4 (]: Finished running node test.ecom.unique_stg_orders_order_id.e3b841c71a
+[0m16:05:16.610138 [info ] [Thread-2 (]: 28 of 36 PASS relationships_stg_orders_customer_id__customer_id__ref_stg_customers_  [[32mPASS[0m in 0.03s]
+[0m16:05:16.610737 [debug] [Thread-2 (]: Finished running node test.ecom.relationships_stg_orders_customer_id__customer_id__ref_stg_customers_.430bf21500
+[0m16:05:16.611047 [debug] [Thread-3 (]: Began running node model.ecom.stg_order_items
+[0m16:05:16.611331 [info ] [Thread-3 (]: 30 of 36 START sql view model main_staging.stg_order_items ..................... [RUN]
+[0m16:05:16.611564 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.ecom.not_null_stg_orders_order_date.2177a3e8bb, now model.ecom.stg_order_items)
+[0m16:05:16.611780 [debug] [Thread-3 (]: Began compiling node model.ecom.stg_order_items
+[0m16:05:16.613510 [debug] [Thread-3 (]: Writing injected SQL for node "model.ecom.stg_order_items"
+[0m16:05:16.613925 [debug] [Thread-3 (]: Began executing node model.ecom.stg_order_items
+[0m16:05:16.615655 [debug] [Thread-3 (]: Writing runtime sql for node "model.ecom.stg_order_items"
+[0m16:05:16.616063 [debug] [Thread-3 (]: Using duckdb connection "model.ecom.stg_order_items"
+[0m16:05:16.616226 [debug] [Thread-3 (]: On model.ecom.stg_order_items: BEGIN
+[0m16:05:16.616412 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m16:05:16.616810 [debug] [Thread-3 (]: SQL status: OK in 0.000 seconds
+[0m16:05:16.616982 [debug] [Thread-3 (]: Using duckdb connection "model.ecom.stg_order_items"
+[0m16:05:16.617178 [debug] [Thread-3 (]: On model.ecom.stg_order_items: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "model.ecom.stg_order_items"} */
+
+  
+  create view "ecom"."main_staging"."stg_order_items__dbt_tmp" as (
+    /*
+  stg_order_items
+  ---------------
+  - Casts numeric columns
+  - Adds derived column: is_flash_sale flag when unit_price < list_price
+  - Filters items whose order_id no longer exists after stg_orders cleanup
+*/
+
+with source as (
+    select * from "ecom"."raw"."order_items"
+),
+
+valid_orders as (
+    select order_id from "ecom"."main_staging"."stg_orders"
+),
+
+casted as (
+    -- cast first in a separate CTE so arithmetic below works on typed values
+    select
+        order_item_id,
+        order_id,
+        product_id,
+        seller_id,
+        cast(quantity    as integer)        as quantity,
+        cast(unit_price  as decimal(10,2))  as unit_price,
+        cast(list_price  as decimal(10,2))  as list_price,
+        cast(discount_pct as decimal(6,4))  as discount_pct
+    from source
+    where order_id in (select order_id from valid_orders)
+),
+
+renamed as (
+    select
+        order_item_id,
+        order_id,
+        product_id,
+        seller_id,
+        quantity,
+        unit_price,
+        list_price,
+        discount_pct,
+        unit_price < list_price                                             as is_flash_sale,
+        round(unit_price * quantity * (1 - coalesce(discount_pct, 0)), 2)  as line_revenue
+    from casted
+)
+
+select * from renamed
+  );
+
+[0m16:05:16.618622 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.620334 [debug] [Thread-3 (]: Using duckdb connection "model.ecom.stg_order_items"
+[0m16:05:16.620527 [debug] [Thread-3 (]: On model.ecom.stg_order_items: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "model.ecom.stg_order_items"} */
+alter view "ecom"."main_staging"."stg_order_items__dbt_tmp" rename to "stg_order_items"
+[0m16:05:16.620840 [debug] [Thread-3 (]: SQL status: OK in 0.000 seconds
+[0m16:05:16.621584 [debug] [Thread-3 (]: On model.ecom.stg_order_items: COMMIT
+[0m16:05:16.621755 [debug] [Thread-3 (]: Using duckdb connection "model.ecom.stg_order_items"
+[0m16:05:16.621910 [debug] [Thread-3 (]: On model.ecom.stg_order_items: COMMIT
+[0m16:05:16.622378 [debug] [Thread-3 (]: SQL status: OK in 0.000 seconds
+[0m16:05:16.623538 [debug] [Thread-3 (]: Using duckdb connection "model.ecom.stg_order_items"
+[0m16:05:16.623720 [debug] [Thread-3 (]: On model.ecom.stg_order_items: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "model.ecom.stg_order_items"} */
+
+      drop view if exists "ecom"."main_staging"."stg_order_items__dbt_backup" cascade
+    
+[0m16:05:16.623999 [debug] [Thread-3 (]: SQL status: OK in 0.000 seconds
+[0m16:05:16.624625 [debug] [Thread-3 (]: On model.ecom.stg_order_items: Close
+[0m16:05:16.624891 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'c1e051fe-2da2-4723-894a-d9f18a60ef10', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11abb6570>]}
+[0m16:05:16.625184 [info ] [Thread-3 (]: 30 of 36 OK created sql view model main_staging.stg_order_items ................ [[32mOK[0m in 0.01s]
+[0m16:05:16.625478 [debug] [Thread-3 (]: Finished running node model.ecom.stg_order_items
+[0m16:05:16.625835 [debug] [Thread-4 (]: Began running node test.ecom.not_null_stg_order_items_order_id.2063801f96
+[0m16:05:16.626055 [debug] [Thread-2 (]: Began running node test.ecom.not_null_stg_order_items_order_item_id.26a7e2bc35
+[0m16:05:16.626411 [debug] [Thread-1 (]: Began running node test.ecom.not_null_stg_order_items_product_id.5154a8a6f6
+[0m16:05:16.626244 [info ] [Thread-4 (]: 31 of 36 START test not_null_stg_order_items_order_id .......................... [RUN]
+[0m16:05:16.626659 [debug] [Thread-3 (]: Began running node test.ecom.relationships_stg_order_items_order_id__order_id__ref_stg_orders_.dbe9930c54
+[0m16:05:16.626826 [info ] [Thread-2 (]: 32 of 36 START test not_null_stg_order_items_order_item_id ..................... [RUN]
+[0m16:05:16.626981 [info ] [Thread-1 (]: 33 of 36 START test not_null_stg_order_items_product_id ........................ [RUN]
+[0m16:05:16.627258 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.ecom.unique_stg_orders_order_id.e3b841c71a, now test.ecom.not_null_stg_order_items_order_id.2063801f96)
+[0m16:05:16.627681 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.ecom.relationships_stg_orders_customer_id__customer_id__ref_stg_customers_.430bf21500, now test.ecom.not_null_stg_order_items_order_item_id.26a7e2bc35)
+[0m16:05:16.627442 [info ] [Thread-3 (]: 34 of 36 START test relationships_stg_order_items_order_id__order_id__ref_stg_orders_  [RUN]
+[0m16:05:16.627918 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.ecom.not_null_stg_orders_order_id.81cfe2fe64, now test.ecom.not_null_stg_order_items_product_id.5154a8a6f6)
+[0m16:05:16.628090 [debug] [Thread-4 (]: Began compiling node test.ecom.not_null_stg_order_items_order_id.2063801f96
+[0m16:05:16.628259 [debug] [Thread-2 (]: Began compiling node test.ecom.not_null_stg_order_items_order_item_id.26a7e2bc35
+[0m16:05:16.628434 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.ecom.stg_order_items, now test.ecom.relationships_stg_order_items_order_id__order_id__ref_stg_orders_.dbe9930c54)
+[0m16:05:16.628596 [debug] [Thread-1 (]: Began compiling node test.ecom.not_null_stg_order_items_product_id.5154a8a6f6
+[0m16:05:16.630683 [debug] [Thread-4 (]: Writing injected SQL for node "test.ecom.not_null_stg_order_items_order_id.2063801f96"
+[0m16:05:16.632675 [debug] [Thread-2 (]: Writing injected SQL for node "test.ecom.not_null_stg_order_items_order_item_id.26a7e2bc35"
+[0m16:05:16.632883 [debug] [Thread-3 (]: Began compiling node test.ecom.relationships_stg_order_items_order_id__order_id__ref_stg_orders_.dbe9930c54
+[0m16:05:16.636396 [debug] [Thread-1 (]: Writing injected SQL for node "test.ecom.not_null_stg_order_items_product_id.5154a8a6f6"
+[0m16:05:16.639120 [debug] [Thread-3 (]: Writing injected SQL for node "test.ecom.relationships_stg_order_items_order_id__order_id__ref_stg_orders_.dbe9930c54"
+[0m16:05:16.639567 [debug] [Thread-4 (]: Began executing node test.ecom.not_null_stg_order_items_order_id.2063801f96
+[0m16:05:16.639782 [debug] [Thread-2 (]: Began executing node test.ecom.not_null_stg_order_items_order_item_id.26a7e2bc35
+[0m16:05:16.639966 [debug] [Thread-1 (]: Began executing node test.ecom.not_null_stg_order_items_product_id.5154a8a6f6
+[0m16:05:16.641253 [debug] [Thread-4 (]: Writing runtime sql for node "test.ecom.not_null_stg_order_items_order_id.2063801f96"
+[0m16:05:16.642413 [debug] [Thread-2 (]: Writing runtime sql for node "test.ecom.not_null_stg_order_items_order_item_id.26a7e2bc35"
+[0m16:05:16.643662 [debug] [Thread-1 (]: Writing runtime sql for node "test.ecom.not_null_stg_order_items_product_id.5154a8a6f6"
+[0m16:05:16.643881 [debug] [Thread-3 (]: Began executing node test.ecom.relationships_stg_order_items_order_id__order_id__ref_stg_orders_.dbe9930c54
+[0m16:05:16.645166 [debug] [Thread-3 (]: Writing runtime sql for node "test.ecom.relationships_stg_order_items_order_id__order_id__ref_stg_orders_.dbe9930c54"
+[0m16:05:16.645473 [debug] [Thread-4 (]: Using duckdb connection "test.ecom.not_null_stg_order_items_order_id.2063801f96"
+[0m16:05:16.645673 [debug] [Thread-2 (]: Using duckdb connection "test.ecom.not_null_stg_order_items_order_item_id.26a7e2bc35"
+[0m16:05:16.645948 [debug] [Thread-4 (]: On test.ecom.not_null_stg_order_items_order_id.2063801f96: BEGIN
+[0m16:05:16.646158 [debug] [Thread-3 (]: Using duckdb connection "test.ecom.relationships_stg_order_items_order_id__order_id__ref_stg_orders_.dbe9930c54"
+[0m16:05:16.646358 [debug] [Thread-2 (]: On test.ecom.not_null_stg_order_items_order_item_id.26a7e2bc35: BEGIN
+[0m16:05:16.646541 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m16:05:16.646722 [debug] [Thread-1 (]: Using duckdb connection "test.ecom.not_null_stg_order_items_product_id.5154a8a6f6"
+[0m16:05:16.646887 [debug] [Thread-3 (]: On test.ecom.relationships_stg_order_items_order_id__order_id__ref_stg_orders_.dbe9930c54: BEGIN
+[0m16:05:16.647045 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m16:05:16.647303 [debug] [Thread-1 (]: On test.ecom.not_null_stg_order_items_product_id.5154a8a6f6: BEGIN
+[0m16:05:16.647475 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m16:05:16.647652 [debug] [Thread-4 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.647881 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:05:16.648091 [debug] [Thread-2 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.648265 [debug] [Thread-4 (]: Using duckdb connection "test.ecom.not_null_stg_order_items_order_id.2063801f96"
+[0m16:05:16.648427 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.648620 [debug] [Thread-2 (]: Using duckdb connection "test.ecom.not_null_stg_order_items_order_item_id.26a7e2bc35"
+[0m16:05:16.648802 [debug] [Thread-4 (]: On test.ecom.not_null_stg_order_items_order_id.2063801f96: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.not_null_stg_order_items_order_id.2063801f96"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select order_id
+from "ecom"."main_staging"."stg_order_items"
+where order_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.648977 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.649132 [debug] [Thread-3 (]: Using duckdb connection "test.ecom.relationships_stg_order_items_order_id__order_id__ref_stg_orders_.dbe9930c54"
+[0m16:05:16.649301 [debug] [Thread-2 (]: On test.ecom.not_null_stg_order_items_order_item_id.26a7e2bc35: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.not_null_stg_order_items_order_item_id.26a7e2bc35"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select order_item_id
+from "ecom"."main_staging"."stg_order_items"
+where order_item_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.649542 [debug] [Thread-1 (]: Using duckdb connection "test.ecom.not_null_stg_order_items_product_id.5154a8a6f6"
+[0m16:05:16.649745 [debug] [Thread-3 (]: On test.ecom.relationships_stg_order_items_order_id__order_id__ref_stg_orders_.dbe9930c54: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.relationships_stg_order_items_order_id__order_id__ref_stg_orders_.dbe9930c54"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select order_id as from_field
+    from "ecom"."main_staging"."stg_order_items"
+    where order_id is not null
+),
+
+parent as (
+    select order_id as to_field
+    from "ecom"."main_staging"."stg_orders"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.650178 [debug] [Thread-1 (]: On test.ecom.not_null_stg_order_items_product_id.5154a8a6f6: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.not_null_stg_order_items_product_id.5154a8a6f6"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select product_id
+from "ecom"."main_staging"."stg_order_items"
+where product_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.656506 [debug] [Thread-1 (]: SQL status: OK in 0.006 seconds
+[0m16:05:16.656784 [debug] [Thread-2 (]: SQL status: OK in 0.007 seconds
+[0m16:05:16.656995 [debug] [Thread-4 (]: SQL status: OK in 0.008 seconds
+[0m16:05:16.658159 [debug] [Thread-2 (]: On test.ecom.not_null_stg_order_items_order_item_id.26a7e2bc35: ROLLBACK
+[0m16:05:16.658904 [debug] [Thread-1 (]: On test.ecom.not_null_stg_order_items_product_id.5154a8a6f6: ROLLBACK
+[0m16:05:16.659634 [debug] [Thread-4 (]: On test.ecom.not_null_stg_order_items_order_id.2063801f96: ROLLBACK
+[0m16:05:16.660157 [debug] [Thread-1 (]: Failed to rollback 'test.ecom.not_null_stg_order_items_product_id.5154a8a6f6'
+[0m16:05:16.660361 [debug] [Thread-1 (]: On test.ecom.not_null_stg_order_items_product_id.5154a8a6f6: Close
+[0m16:05:16.660804 [debug] [Thread-4 (]: Failed to rollback 'test.ecom.not_null_stg_order_items_order_id.2063801f96'
+[0m16:05:16.660984 [debug] [Thread-4 (]: On test.ecom.not_null_stg_order_items_order_id.2063801f96: Close
+[0m16:05:16.661284 [info ] [Thread-1 (]: 33 of 36 PASS not_null_stg_order_items_product_id .............................. [[32mPASS[0m in 0.03s]
+[0m16:05:16.661564 [debug] [Thread-1 (]: Finished running node test.ecom.not_null_stg_order_items_product_id.5154a8a6f6
+[0m16:05:16.661761 [debug] [Thread-1 (]: Began running node test.ecom.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c
+[0m16:05:16.661936 [info ] [Thread-1 (]: 35 of 36 START test relationships_stg_order_items_product_id__product_id__ref_stg_products_  [RUN]
+[0m16:05:16.662207 [info ] [Thread-4 (]: 31 of 36 PASS not_null_stg_order_items_order_id ................................ [[32mPASS[0m in 0.03s]
+[0m16:05:16.662487 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.ecom.not_null_stg_order_items_product_id.5154a8a6f6, now test.ecom.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c)
+[0m16:05:16.662680 [debug] [Thread-3 (]: SQL status: OK in 0.012 seconds
+[0m16:05:16.663193 [debug] [Thread-2 (]: Failed to rollback 'test.ecom.not_null_stg_order_items_order_item_id.26a7e2bc35'
+[0m16:05:16.663438 [debug] [Thread-4 (]: Finished running node test.ecom.not_null_stg_order_items_order_id.2063801f96
+[0m16:05:16.663630 [debug] [Thread-1 (]: Began compiling node test.ecom.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c
+[0m16:05:16.663867 [debug] [Thread-2 (]: On test.ecom.not_null_stg_order_items_order_item_id.26a7e2bc35: Close
+[0m16:05:16.664087 [debug] [Thread-4 (]: Began running node test.ecom.unique_stg_order_items_order_item_id.90e333a108
+[0m16:05:16.664954 [debug] [Thread-3 (]: On test.ecom.relationships_stg_order_items_order_id__order_id__ref_stg_orders_.dbe9930c54: ROLLBACK
+[0m16:05:16.667979 [debug] [Thread-1 (]: Writing injected SQL for node "test.ecom.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c"
+[0m16:05:16.668373 [info ] [Thread-2 (]: 32 of 36 PASS not_null_stg_order_items_order_item_id ........................... [[32mPASS[0m in 0.04s]
+[0m16:05:16.668605 [info ] [Thread-4 (]: 36 of 36 START test unique_stg_order_items_order_item_id ....................... [RUN]
+[0m16:05:16.669153 [debug] [Thread-3 (]: Failed to rollback 'test.ecom.relationships_stg_order_items_order_id__order_id__ref_stg_orders_.dbe9930c54'
+[0m16:05:16.669426 [debug] [Thread-2 (]: Finished running node test.ecom.not_null_stg_order_items_order_item_id.26a7e2bc35
+[0m16:05:16.669646 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.ecom.not_null_stg_order_items_order_id.2063801f96, now test.ecom.unique_stg_order_items_order_item_id.90e333a108)
+[0m16:05:16.669890 [debug] [Thread-3 (]: On test.ecom.relationships_stg_order_items_order_id__order_id__ref_stg_orders_.dbe9930c54: Close
+[0m16:05:16.670123 [debug] [Thread-4 (]: Began compiling node test.ecom.unique_stg_order_items_order_item_id.90e333a108
+[0m16:05:16.670308 [debug] [Thread-1 (]: Began executing node test.ecom.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c
+[0m16:05:16.670581 [info ] [Thread-3 (]: 34 of 36 PASS relationships_stg_order_items_order_id__order_id__ref_stg_orders_  [[32mPASS[0m in 0.04s]
+[0m16:05:16.672582 [debug] [Thread-4 (]: Writing injected SQL for node "test.ecom.unique_stg_order_items_order_item_id.90e333a108"
+[0m16:05:16.674065 [debug] [Thread-1 (]: Writing runtime sql for node "test.ecom.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c"
+[0m16:05:16.674359 [debug] [Thread-3 (]: Finished running node test.ecom.relationships_stg_order_items_order_id__order_id__ref_stg_orders_.dbe9930c54
+[0m16:05:16.674789 [debug] [Thread-1 (]: Using duckdb connection "test.ecom.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c"
+[0m16:05:16.674990 [debug] [Thread-4 (]: Began executing node test.ecom.unique_stg_order_items_order_item_id.90e333a108
+[0m16:05:16.675175 [debug] [Thread-1 (]: On test.ecom.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c: BEGIN
+[0m16:05:16.676368 [debug] [Thread-4 (]: Writing runtime sql for node "test.ecom.unique_stg_order_items_order_item_id.90e333a108"
+[0m16:05:16.676564 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:05:16.676951 [debug] [Thread-4 (]: Using duckdb connection "test.ecom.unique_stg_order_items_order_item_id.90e333a108"
+[0m16:05:16.677129 [debug] [Thread-4 (]: On test.ecom.unique_stg_order_items_order_item_id.90e333a108: BEGIN
+[0m16:05:16.677296 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.677456 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m16:05:16.677621 [debug] [Thread-1 (]: Using duckdb connection "test.ecom.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c"
+[0m16:05:16.677862 [debug] [Thread-1 (]: On test.ecom.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select product_id as from_field
+    from "ecom"."main_staging"."stg_order_items"
+    where product_id is not null
+),
+
+parent as (
+    select product_id as to_field
+    from "ecom"."main_staging"."stg_products"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.678127 [debug] [Thread-4 (]: SQL status: OK in 0.001 seconds
+[0m16:05:16.678285 [debug] [Thread-4 (]: Using duckdb connection "test.ecom.unique_stg_order_items_order_item_id.90e333a108"
+[0m16:05:16.678451 [debug] [Thread-4 (]: On test.ecom.unique_stg_order_items_order_item_id.90e333a108: /* {"app": "dbt", "dbt_version": "1.11.8", "profile_name": "ecom", "target_name": "dev", "node_id": "test.ecom.unique_stg_order_items_order_item_id.90e333a108"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    order_item_id as unique_field,
+    count(*) as n_records
+
+from "ecom"."main_staging"."stg_order_items"
+where order_item_id is not null
+group by order_item_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:05:16.684433 [debug] [Thread-1 (]: SQL status: OK in 0.006 seconds
+[0m16:05:16.684726 [debug] [Thread-4 (]: SQL status: OK in 0.006 seconds
+[0m16:05:16.685823 [debug] [Thread-4 (]: On test.ecom.unique_stg_order_items_order_item_id.90e333a108: ROLLBACK
+[0m16:05:16.686559 [debug] [Thread-1 (]: On test.ecom.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c: ROLLBACK
+[0m16:05:16.687064 [debug] [Thread-4 (]: Failed to rollback 'test.ecom.unique_stg_order_items_order_item_id.90e333a108'
+[0m16:05:16.687245 [debug] [Thread-4 (]: On test.ecom.unique_stg_order_items_order_item_id.90e333a108: Close
+[0m16:05:16.687687 [debug] [Thread-1 (]: Failed to rollback 'test.ecom.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c'
+[0m16:05:16.688010 [info ] [Thread-4 (]: 36 of 36 PASS unique_stg_order_items_order_item_id ............................. [[32mPASS[0m in 0.02s]
+[0m16:05:16.688225 [debug] [Thread-1 (]: On test.ecom.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c: Close
+[0m16:05:16.688493 [debug] [Thread-4 (]: Finished running node test.ecom.unique_stg_order_items_order_item_id.90e333a108
+[0m16:05:16.688780 [info ] [Thread-1 (]: 35 of 36 PASS relationships_stg_order_items_product_id__product_id__ref_stg_products_  [[32mPASS[0m in 0.03s]
+[0m16:05:16.689071 [debug] [Thread-1 (]: Finished running node test.ecom.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c
+[0m16:05:16.689676 [debug] [MainThread]: Using duckdb connection "master"
+[0m16:05:16.689840 [debug] [MainThread]: On master: BEGIN
+[0m16:05:16.689972 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m16:05:16.690282 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m16:05:16.690425 [debug] [MainThread]: On master: COMMIT
+[0m16:05:16.690565 [debug] [MainThread]: Using duckdb connection "master"
+[0m16:05:16.690691 [debug] [MainThread]: On master: COMMIT
+[0m16:05:16.690894 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m16:05:16.691032 [debug] [MainThread]: On master: Close
+[0m16:05:16.691206 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:05:16.691331 [debug] [MainThread]: Connection 'test.ecom.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c' was properly closed.
+[0m16:05:16.691449 [debug] [MainThread]: Connection 'test.ecom.not_null_stg_order_items_order_item_id.26a7e2bc35' was properly closed.
+[0m16:05:16.691567 [debug] [MainThread]: Connection 'test.ecom.relationships_stg_order_items_order_id__order_id__ref_stg_orders_.dbe9930c54' was properly closed.
+[0m16:05:16.691682 [debug] [MainThread]: Connection 'test.ecom.unique_stg_order_items_order_item_id.90e333a108' was properly closed.
+[0m16:05:16.691846 [info ] [MainThread]: 
+[0m16:05:16.692000 [info ] [MainThread]: Finished running 30 data tests, 6 view models in 0 hours 0 minutes and 0.50 seconds (0.50s).
+[0m16:05:16.694112 [debug] [MainThread]: Command end result
+[0m16:05:16.715458 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/burakkurt/data_engineering_projects/e-commerce-analytics/ecom/target/manifest.json
+[0m16:05:16.717345 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/burakkurt/data_engineering_projects/e-commerce-analytics/ecom/target/semantic_manifest.json
+[0m16:05:16.721519 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/burakkurt/data_engineering_projects/e-commerce-analytics/ecom/target/run_results.json
+[0m16:05:16.721749 [info ] [MainThread]: 
+[0m16:05:16.721959 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m16:05:16.722130 [info ] [MainThread]: 
+[0m16:05:16.722395 [info ] [MainThread]: Done. PASS=36 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=36
+[0m16:05:16.722921 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- MissingArgumentsPropertyInGenericTestDeprecation: 9 occurrences
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m16:05:16.725464 [debug] [MainThread]: Resource report: {"command_name": "build", "command_success": true, "command_wall_clock_time": 1.5960253, "process_in_blocks": "0", "process_kernel_time": 0.242465, "process_mem_max_rss": "200523776", "process_out_blocks": "0", "process_user_time": 2.254767}
+[0m16:05:16.725735 [debug] [MainThread]: Command `dbt build` succeeded at 16:05:16.725690 after 1.60 seconds
+[0m16:05:16.725957 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1196b8440>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x119133470>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10467c1a0>]}
+[0m16:05:16.726148 [debug] [MainThread]: Flushing usage events
+[0m16:05:22.257478 [debug] [MainThread]: An error was encountered while trying to flush usage events
