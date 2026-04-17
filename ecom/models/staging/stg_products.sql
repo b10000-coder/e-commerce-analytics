@@ -17,11 +17,11 @@ final as (
         trim(category)                                      as category,
         trim(subcategory)                                   as subcategory,
         seller_id,
-        cast(list_price as decimal(10,2))                   as list_price,
-        cast(cost_price as decimal(10,2))                   as cost_price,
+        cast(list_price as numeric)                   as list_price,
+        cast(cost_price as numeric)                   as cost_price,
         round(
-            (cast(list_price as decimal(10,2)) - cast(cost_price as decimal(10,2)))
-            / nullif(cast(list_price as decimal(10,2)), 0),
+            (cast(list_price as numeric) - cast(cost_price as numeric))
+            / nullif(cast(list_price as numeric), 0),
             4
         )                                                   as gross_margin_pct,
         cast(is_active as boolean)                          as is_active,

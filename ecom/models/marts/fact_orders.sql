@@ -41,7 +41,11 @@ joined as (
     select
         oi.order_item_id,
         o.order_id,
+        {% if target.type == 'bigquery' %}
+        cast(format_date('%Y%m%d', cast(o.order_date as date)) as int64)  as date_key,
+        {% else %}
         cast(strftime(o.order_date::date, '%Y%m%d') as integer)  as date_key,
+        {% endif %}
         dc.customer_key,
         dp.product_key,
         ds.seller_key,
@@ -75,7 +79,20 @@ joined as (
 {% if is_incremental() %}
 ,
 watermark as (
-    select coalesce(max(order_date::date), '1900-01-01'::date) as max_date
+    select coalesce(
+        max(
+            {% if target.type == 'bigquery' %}
+            cast(order_date as date)
+            {% else %}
+            order_date::date
+            {% endif %}
+        ),
+        {% if target.type == 'bigquery' %}
+        date '1900-01-01'
+        {% else %}
+        '1900-01-01'::date
+        {% endif %}
+    ) as max_date
     from {{ this }}
 )
 {% endif %}
@@ -84,5 +101,10 @@ select joined.*
 from joined
 {% if is_incremental() %}
 cross join watermark
-where joined.order_date::date > watermark.max_date
+where
+    {% if target.type == 'bigquery' %}
+    cast(joined.order_date as date) > watermark.max_date
+    {% else %}
+    joined.order_date::date > watermark.max_date
+    {% endif %}
 {% endif %}

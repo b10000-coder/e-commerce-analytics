@@ -9,7 +9,7 @@ final as (
         lower(campaign_type)                        as campaign_type,
         cast(start_date as date)                    as start_date,
         cast(end_date as date)                      as end_date,
-        cast(discount_pct as decimal(5,2))          as discount_pct,
+        cast(discount_pct as numeric)          as discount_pct,
         cast(is_active as boolean)                  as is_active
     from source
 )

@@ -1,38 +1,40 @@
 /*
   stg_orders
   ----------
-  - Key challenge: order_date arrives in two formats (ISO and dd/mm/yyyy).
-    We COALESCE two TRY_STRPTIME calls to handle both safely.
-  - Filters rows where the date cannot be parsed (data quality guard)
-  - Filters orphaned orders (customer_id not in stg_customers)
-  - Casts and standardises order_status and payment_method
+  Handles two date formats and filters orphaned customer_ids.
+  Uses target-conditional date parsing for DuckDB and BigQuery compatibility.
 */
-
 with source as (
     select * from {{ source('raw', 'orders') }}
+),
+
+valid_customers as (
+    select customer_id from {{ ref('stg_customers') }}
 ),
 
 date_parsed as (
     select
         order_id,
         customer_id,
-        -- Try ISO first, then dd/mm/yyyy — whichever parses wins
+        {% if target.type == 'bigquery' %}
+        coalesce(
+            safe.parse_date('%Y-%m-%d', order_date),
+            safe.parse_date('%d/%m/%Y', order_date)
+        )                                       as order_date,
+        {% else %}
         coalesce(
             try_strptime(order_date, '%Y-%m-%d'),
             try_strptime(order_date, '%d/%m/%Y')
         )                                       as order_date,
+        {% endif %}
         order_status,
         payment_method,
         shipping_city,
-        cast(discount_amount as decimal(10,2))  as discount_amount,
+        cast(discount_amount as numeric)        as discount_amount,
         nullif(trim(coupon_code), '')           as coupon_code,
         lower(platform)                         as platform,
-        nullif(trim(campaign_id), '')       as campaign_id
+        nullif(trim(campaign_id), '')           as campaign_id
     from source
-),
-
-valid_customers as (
-    select customer_id from {{ ref('stg_customers') }}
 ),
 
 final as (
@@ -46,12 +48,10 @@ final as (
         o.discount_amount,
         o.coupon_code,
         o.platform,
-        nullif(trim(o.campaign_id), '')   as campaign_id
+        o.campaign_id
     from date_parsed o
-    -- Drop unparseable dates
     where o.order_date is not null
-    -- Drop orphaned customer_ids (referential integrity fix)
-    and o.customer_id in (select customer_id from valid_customers)
+      and o.customer_id in (select customer_id from valid_customers)
 )
 
 select * from final
