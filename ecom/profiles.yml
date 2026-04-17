@@ -5,3 +5,15 @@ ecom:
       type: duckdb
       path: "{{ env_var('DBT_DUCKDB_PATH', '../data/ecom.duckdb') }}"
       threads: 4
+
+    bigquery:
+      type: bigquery
+      method: service-account
+      project: pc-api-5223742488799605973-592
+      dataset: marts
+      keyfile: /Users/burakkurt/.dbt/dbt-ecom-key.json
+      location: EU
+      threads: 4
+      timeout_seconds: 300
+      priority: interactive
+      retries: 1

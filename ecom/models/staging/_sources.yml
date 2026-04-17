@@ -19,3 +19,6 @@ sources:
         description: "Raw app/web sessions — 20% anonymous (null customer_id)"
       - name: customer_changes
         description: "Customer attribute change events — city moves and tier upgrades"
+      - name: campaigns
+      - name: seller_changes
+      - name: seller_daily_stats

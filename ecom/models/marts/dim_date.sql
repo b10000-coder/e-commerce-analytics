@@ -1,22 +1,40 @@
-/*
-  dim_date
-  --------
-  A generated date dimension covering the full data range (Oct 2024 – Mar 2025).
-  No source table needed — built purely from DuckDB's generate_series().
+{% if target.type == 'bigquery' %}
 
-  date_key is an integer in YYYYMMDD format (e.g. 20241015).
-  This is the foreign key pattern used in fact_orders.
+with date_spine as (
+    select date
+    from unnest(
+        generate_date_array('2024-10-01', '2025-03-31', interval 1 day)
+    ) as date
+),
 
-  Why a date dimension?
-  - Lets analysts filter/group by year, month, quarter, weekday without
-    writing date functions in every query.
-  - A single tested source of date logic = single source of truth.
-*/
+final as (
+    select
+        cast(format_date('%Y%m%d', date) as int64)  as date_key,
+        date,
+        extract(year from date)                      as year,
+        extract(month from date)                     as month_number,
+        format_date('%B', date)                      as month_name,
+        extract(quarter from date)                   as quarter,
+        concat('Q', cast(extract(quarter from date) as string)) as quarter_label,
+        extract(dayofweek from date)                 as day_of_week,
+        format_date('%A', date)                      as day_name,
+        extract(dayofweek from date) in (1, 7)       as is_weekend,
+        extract(week from date)                      as week_of_year
+    from date_spine
+)
+
+select * from final
+
+{% else %}
 
 with date_spine as (
     select
         unnest(
-            generate_series(date '2024-10-01', date '2025-03-31', interval '1 day')
+            generate_series(
+                date '2024-10-01',
+                date '2025-03-31',
+                interval '1 day'
+            )
         )::date as date
 ),
 
@@ -37,3 +55,5 @@ final as (
 )
 
 select * from final
+
+{% endif %}

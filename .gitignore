@@ -8,4 +8,7 @@ ecom/target/
 ecom/dbt_packages/
 ecom/logs/
 ecom/.user.ymllogs/
-logs/
+logs/airflow_venv/
+airflow/logs/
+airflow/airflow.db
+airflow/__pycache__/

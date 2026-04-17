@@ -267,3 +267,128 @@ print(f"  sessions:   {len(sessions):,} rows")
 
 print("\nDone. Files written to data/raw/")
 print(f"Date range: {iso(START_DATE)} → {iso(END_DATE)}")
+
+# ── NEW: CAMPAIGNS ────────────────────────────────────────────────────────────
+def generate_campaigns(n=20, start_date=datetime(2024,10,1), end_date=datetime(2025,3,31)):
+    import random
+    CAMPAIGN_TYPES = ["flash_sale", "coupon", "seasonal", "loyalty"]
+    rows = []
+    for i in range(1, n+1):
+        cs = start_date + timedelta(days=random.randint(0, (end_date-start_date).days - 10))
+        ce = cs + timedelta(days=random.randint(1, 7))
+        if ce > end_date:
+            ce = end_date
+        rows.append({
+            "campaign_id":   f"CAM{i:03d}",
+            "campaign_name": f"Campaign {i}",
+            "campaign_type": random.choice(CAMPAIGN_TYPES),
+            "start_date":    cs.strftime("%Y-%m-%d"),
+            "end_date":      ce.strftime("%Y-%m-%d"),
+            "discount_pct":  round(random.uniform(0.05, 0.50), 2),
+            "is_active":     "true",
+        })
+    return rows
+
+
+# ── NEW: SELLER CHANGES ───────────────────────────────────────────────────────
+def generate_seller_changes(seller_ids, n_sellers=60,
+                             start_date=datetime(2024,10,1),
+                             end_date=datetime(2025,3,31)):
+    SELLER_TIERS = ["standard", "premium", "elite"]
+    chosen = random.sample(seller_ids, min(n_sellers, len(seller_ids)))
+    rows = []
+    for sid in chosen:
+        n_events = random.randint(1, 2)
+        used = set()
+        for _ in range(n_events):
+            d = start_date + timedelta(days=random.randint(0, (end_date-start_date).days))
+            while d in used:
+                d = start_date + timedelta(days=random.randint(0, (end_date-start_date).days))
+            used.add(d)
+            rows.append({
+                "seller_id":   sid,
+                "seller_tier": random.choice(SELLER_TIERS),
+                "rating":      round(random.uniform(3.0, 5.0), 2),
+                "change_date": d.strftime("%Y-%m-%d"),
+            })
+    rows.sort(key=lambda r: (r["seller_id"], r["change_date"]))
+    return rows
+
+
+# ── NEW: SELLER DAILY STATS ───────────────────────────────────────────────────
+def generate_seller_daily_stats(order_items_rows, orders_rows, sellers_rows):
+    from collections import defaultdict
+    order_map = {o["order_id"]: o for o in orders_rows}
+    daily = defaultdict(lambda: {
+        "gmv": 0.0, "total_orders": set(),
+        "cancelled": set(), "returned": set(), "total_items": 0
+    })
+    for oi in order_items_rows:
+        order = order_map.get(oi["order_id"])
+        if not order:
+            continue
+        try:
+            # parse either date format
+            od = oi.get("order_date") or order.get("order_date", "")
+            try:
+                d = datetime.strptime(od, "%Y-%m-%d").strftime("%Y-%m-%d")
+            except:
+                d = datetime.strptime(od, "%d/%m/%Y").strftime("%Y-%m-%d")
+        except:
+            continue
+        key = (oi["seller_id"], d)
+        qty  = int(oi.get("quantity", 1))
+        up   = float(oi.get("unit_price", 0))
+        dp   = float(oi.get("discount_pct", 0) or 0)
+        rev  = round(up * qty * (1 - dp), 2)
+        daily[key]["gmv"] += rev
+        daily[key]["total_orders"].add(oi["order_id"])
+        daily[key]["total_items"] += 1
+        status = order.get("order_status", "")
+        if status == "cancelled":
+            daily[key]["cancelled"].add(oi["order_id"])
+        if status == "returned":
+            daily[key]["returned"].add(oi["order_id"])
+
+    rows = []
+    for (seller_id, stat_date), v in daily.items():
+        total = len(v["total_orders"])
+        rows.append({
+            "seller_id":          seller_id,
+            "stat_date":          stat_date,
+            "gmv":                round(v["gmv"], 2),
+            "total_orders":       total,
+            "cancelled_orders":   len(v["cancelled"]),
+            "returned_orders":    len(v["returned"]),
+            "total_items":        v["total_items"],
+            "cancellation_rate":  round(len(v["cancelled"]) / total, 4) if total else 0,
+            "return_rate":        round(len(v["returned"]) / total, 4) if total else 0,
+            "avg_rating":         round(random.uniform(3.0, 5.0), 2),
+        })
+    rows.sort(key=lambda r: (r["seller_id"], r["stat_date"]))
+    return rows
+
+
+# ── NEW: WRITE HELPER ─────────────────────────────────────────────────────────
+def write_csv_extra(filename, rows):
+    if not rows:
+        print(f"SKIP {filename} — no rows")
+        return
+    out_dir = os.path.join(os.path.dirname(__file__), "..", "data", "raw")
+    path = os.path.join(out_dir, filename)
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=rows[0].keys())
+        w.writeheader()
+        w.writerows(rows)
+    print(f"OK   {filename:<35} {len(rows):>5} rows")
+
+# ── CALL NEW GENERATORS ───────────────────────────────────────────────────────
+campaigns = generate_campaigns(20)
+write_csv_extra("campaigns.csv", campaigns)
+
+seller_ids = [s["seller_id"] for s in sellers]
+seller_changes = generate_seller_changes(seller_ids, n_sellers=60)
+write_csv_extra("seller_changes.csv", seller_changes)
+
+seller_daily = generate_seller_daily_stats(order_items, orders, sellers)
+write_csv_extra("seller_daily_stats.csv", seller_daily)

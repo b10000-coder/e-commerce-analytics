@@ -22,9 +22,9 @@ casted as (
         product_id,
         seller_id,
         cast(quantity    as integer)        as quantity,
-        cast(unit_price  as decimal(10,2))  as unit_price,
-        cast(list_price  as decimal(10,2))  as list_price,
-        cast(discount_pct as decimal(6,4))  as discount_pct
+        cast(unit_price  as numeric)  as unit_price,
+        cast(list_price  as numeric)  as list_price,
+        cast(discount_pct as numeric)  as discount_pct
     from source
     where order_id in (select order_id from valid_orders)
 ),

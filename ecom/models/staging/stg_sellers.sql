@@ -18,7 +18,7 @@ final as (
         city,
         cast(is_verified as boolean)            as is_verified,
         cast(joined_date as date)               as joined_date,
-        cast(rating as decimal(3,1))            as rating,
+        cast(rating as numeric)            as rating,
         cast(total_reviews as integer)          as total_reviews
     from source
 )
