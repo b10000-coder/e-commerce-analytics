@@ -168,6 +168,9 @@ print(f"  customers:  {len(customers):,} rows  ({n_dupes} dupes injected)")
 # build a dict for fast lookup
 valid_customer_ids = customer_ids   # original IDs only (not dupes)
 
+# pre-build campaign ids for assignment to orders
+_campaign_ids = [f"CAM{i:03d}" for i in range(1, 21)]
+
 orders = []
 order_ids = []
 for i in range(1, N_ORDERS + 1):
@@ -200,6 +203,7 @@ for i in range(1, N_ORDERS + 1):
         "discount_amount": discount,
         "coupon_code":     maybe_null(f"COUP{random.randint(100,999)}", pct=0.70),
         "platform":        random.choice(PLATFORMS),
+        "campaign_id":     random.choice(_campaign_ids) if random.random() < 0.60 else "",
     })
 
 write_csv(orders, "orders.csv")
