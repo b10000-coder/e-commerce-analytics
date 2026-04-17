@@ -12,3 +12,10 @@ logs/airflow_venv/
 airflow/logs/
 airflow/airflow.db
 airflow/__pycache__/
+airflow/airflow.cfg
+airflow/webserver_config.py
+airflow/standalone_admin_password.txt
+airflow/airflow-webserver.pid
+airflow/*.db
+ecom/.user.yml
+.DS_Store
