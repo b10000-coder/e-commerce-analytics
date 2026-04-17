@@ -84,7 +84,7 @@ models:
   - name: dim_customer_scd2
     description: >
       SCD Type 2 customer dimension. One row per customer per time period.
-      Use valid_from/valid_to to join to fact_orders at the correct point in time.
+      Use effective_date/expiry_date to join to fact_orders at the correct point in time.
       is_current = TRUE for the version active today.
     columns:
       - name: customer_scd_key
@@ -94,9 +94,41 @@ models:
       - name: customer_id
         data_tests:
           - not_null
-      - name: valid_from
+      - name: effective_date
         data_tests:
           - not_null
-      - name: version_number
+      - name: is_current_flag
         data_tests:
           - not_null
+
+  - name: dim_campaign
+    description: "Campaign dimension — flash sales, coupons, seasonal, loyalty."
+    columns:
+      - name: campaign_key
+        description: "Surrogate key. -1 used in fact_orders when no campaign applies."
+        tests: [not_null, unique]
+      - name: campaign_id
+        tests: [not_null, unique]
+      - name: campaign_type
+        description: "Type: flash_sale, coupon, seasonal, loyalty."
+
+  - name: dim_seller_scd2
+    description: "Type 2 seller dimension. Tracks tier and rating changes using effective_date/expiry_date/is_current_flag — Trendyol pattern."
+    columns:
+      - name: seller_scd_key
+        description: "Surrogate key — unique per seller version."
+        tests: [not_null, unique]
+      - name: seller_id
+        tests: [not_null]
+      - name: is_current_flag
+        description: "True for the currently active version."
+
+  - name: fact_seller_daily
+    description: "Pre-aggregated daily seller performance — one row per seller per day. Incremental."
+    columns:
+      - name: seller_key
+        tests: [not_null]
+      - name: stat_date
+        tests: [not_null]
+      - name: gmv
+        description: "Total line revenue for this seller on this day."

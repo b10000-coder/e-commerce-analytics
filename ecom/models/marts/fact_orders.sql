@@ -2,24 +2,16 @@
   fact_orders
   -----------
   Grain: one row per order LINE ITEM (most granular fact table).
-
-  Why line-item grain and not order grain?
-  - An order can have multiple products — line-item grain lets you analyse
-    revenue, margin, and flash-sale rates per product, category, and seller.
-  - You can always roll up to order level with COUNT(DISTINCT order_id).
-
-  Measures (the numbers):
-    quantity, unit_price, list_price, line_revenue, discount_pct
-
-  Foreign keys (the context — join to dims for labels):
-    date_key      → dim_date
-    customer_key  → dim_customer
-    product_key   → dim_product
-    seller_key    → dim_seller
-
-  Degenerate dimensions (IDs with no dim table):
-    order_id, order_item_id — kept directly in the fact table
+  Materialization: incremental (unique_key = order_item_id)
+  New in Phase 1 upgrade:
+    - campaign_key FK to dim_campaign (-1 sentinel when no campaign)
+    - order_date column added for incremental watermark
+    - converted from table to incremental
 */
+{{ config(
+    materialized='incremental',
+    unique_key='order_item_id'
+) }}
 
 with orders as (
     select * from {{ ref('stg_orders') }}
@@ -41,34 +33,32 @@ dim_seller as (
     select seller_key, seller_id from {{ ref('dim_seller') }}
 ),
 
+dim_campaign as (
+    select campaign_key, campaign_id from {{ ref('dim_campaign') }}
+),
+
 joined as (
     select
-        -- degenerate dimensions (natural keys kept in fact)
         oi.order_item_id,
         o.order_id,
-
-        -- foreign keys to dimensions
         cast(strftime(o.order_date::date, '%Y%m%d') as integer)  as date_key,
         dc.customer_key,
         dp.product_key,
         ds.seller_key,
-
-        -- measures
+        coalesce(dcam.campaign_key, -1)                           as campaign_key,
         oi.quantity,
         oi.unit_price,
         oi.list_price,
         oi.discount_pct,
         oi.line_revenue,
         oi.is_flash_sale,
-
-        -- order-level attributes (non-additive context)
         o.order_status,
         o.payment_method,
         o.shipping_city,
         o.platform,
         o.discount_amount                                         as order_discount_amount,
-        o.coupon_code
-
+        o.coupon_code,
+        o.order_date
     from order_items oi
     inner join orders o
         on oi.order_id = o.order_id
@@ -78,6 +68,21 @@ joined as (
         on oi.product_id = dp.product_id
     left join dim_seller ds
         on oi.seller_id = ds.seller_id
+    left join dim_campaign dcam
+        on o.campaign_id = dcam.campaign_id
 )
 
-select * from joined
+{% if is_incremental() %}
+,
+watermark as (
+    select coalesce(max(order_date::date), '1900-01-01'::date) as max_date
+    from {{ this }}
+)
+{% endif %}
+
+select joined.*
+from joined
+{% if is_incremental() %}
+cross join watermark
+where joined.order_date::date > watermark.max_date
+{% endif %}

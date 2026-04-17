@@ -26,7 +26,8 @@ date_parsed as (
         shipping_city,
         cast(discount_amount as decimal(10,2))  as discount_amount,
         nullif(trim(coupon_code), '')           as coupon_code,
-        lower(platform)                         as platform
+        lower(platform)                         as platform,
+        nullif(trim(campaign_id), '')       as campaign_id
     from source
 ),
 
@@ -44,7 +45,8 @@ final as (
         o.shipping_city,
         o.discount_amount,
         o.coupon_code,
-        o.platform
+        o.platform,
+        nullif(trim(o.campaign_id), '')   as campaign_id
     from date_parsed o
     -- Drop unparseable dates
     where o.order_date is not null

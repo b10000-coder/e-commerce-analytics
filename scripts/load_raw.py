@@ -20,6 +20,9 @@ TABLES = [
     "order_items",
     "sessions",
     "customer_changes",
+    "campaigns",
+    "seller_changes",
+    "seller_daily_stats",
 ]
 
 def main():

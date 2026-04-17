@@ -122,3 +122,29 @@ models:
       - name: effective_date
         data_tests:
           - not_null
+
+  - name: stg_campaigns
+    description: "Campaign records — flash sales, coupons, seasonal, loyalty."
+    columns:
+      - name: campaign_id
+        tests: [not_null, unique]
+      - name: campaign_type
+        tests:
+          - accepted_values:
+              values: ['flash_sale', 'coupon', 'seasonal', 'loyalty']
+
+  - name: stg_seller_changes
+    description: "Change event log for seller SCD2. Source for dim_seller_scd2."
+    columns:
+      - name: seller_id
+        tests: [not_null]
+      - name: change_date
+        tests: [not_null]
+
+  - name: stg_seller_daily_stats
+    description: "Pre-aggregated daily seller metrics. Source for fact_seller_daily."
+    columns:
+      - name: seller_id
+        tests: [not_null]
+      - name: stat_date
+        tests: [not_null]
