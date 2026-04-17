@@ -39,6 +39,14 @@ generator/generate.py
 
 ---
 
+## Pipeline Architecture
+
+![Pipeline Architecture](pipeline_architecture.svg)
+
+Two independent pipelines share the same dbt models and source code. CI validates every commit against DuckDB in ~46 seconds. Airflow runs the production BigQuery pipeline daily at 06:00 UTC in ~3 minutes.
+
+---
+
 ## Tech Stack
 
 | Layer | Tool |
