@@ -288,7 +288,7 @@ airflow standalone
 
 ## dbt Test Coverage
 
-100 tests across all 19 models:
+100 tests across 19 models (2 incremental, 7 table, 10 view) — full build completes in ~1.4 seconds locally:
 
 - `unique` and `not_null` on all primary and surrogate keys
 - `accepted_values` on `order_status`, `payment_method`, `customer_tier`, `campaign_type`, `device_type`, `platform`
